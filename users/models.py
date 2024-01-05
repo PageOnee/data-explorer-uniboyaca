@@ -1,11 +1,14 @@
 from django.db import models
 
-# Todo : Clase Usuario Bd 
+
+### Todo : Clase Usuario - BD 
 class Users(models.Model):
     
-    userName = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
+    # ** Datos - (BD)
+    name = models.CharField(max_length=255)
+    user_name = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
+    password = models.CharField(max_length=255)
     
     # ** Configuro vista del Administrador para el Usuario
     def __str__(self):
