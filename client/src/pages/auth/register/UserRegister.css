@@ -1,9 +1,8 @@
-.user-register {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    background: #f9f5f6;
-  }
-  
+.register-page {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: #f9f5f6;
+}

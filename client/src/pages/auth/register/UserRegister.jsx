@@ -1,10 +1,10 @@
-import {UserRegisterForm} from '../../../components/auth/register/UserRegisterForm'
-import './UserRegister.css'
+import { UserRegisterForm } from "../../../components/forms/register/UserRegisterForm";
+import "./UserRegister.css";
 
 export const UserRegister = () => {
   return (
-    <main className="user-register">
+    <main className="register-page">
       <UserRegisterForm> </UserRegisterForm>
     </main>
-  )
-}
+  );
+};
