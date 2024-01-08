@@ -1,0 +1,35 @@
+.menu {
+  position: flex;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 260px;
+  height: 100vw;
+  padding: 0 16px;
+  background: #F1EFEF;
+  border-right: 1px solid #f3f8ff;
+  transition: width 0.4s;
+
+}
+
+.nav-button {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  border: none;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  padding: 0 16px;
+  background: transparent;
+  color: #333;
+  transition: background 0.3s;
+  cursor: pointer;
+  text-align: left;
+}
