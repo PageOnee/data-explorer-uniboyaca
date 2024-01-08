@@ -1,10 +1,10 @@
-import {LoginForm} from '../../../components/auth/login/LoginForm'
-import './Login.css'
+import { LoginForm } from "../../../components/forms/login/LoginForm";
+import "./Login.css";
 
 export const Login = () => {
   return (
-    <main className='login-page'>
+    <main className="login-page">
       <LoginForm></LoginForm>
     </main>
-  )
-} 
+  );
+};
