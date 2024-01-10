@@ -1,2 +1,17 @@
+# ** Entorno Virual :
 venv
-data
+
+# ** Bd :
+db.sqlite3
+
+# ** Archivos Cache :
+data_explorer_api/__pycache__
+users/__pycache__
+data/__pycache__
+
+# ** Archivos Migrations :
+users/migrations
+data/migrations
+
+# ! Temp
+features.txt
