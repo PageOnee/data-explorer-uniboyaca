@@ -1,0 +1,67 @@
+
+.sidemenu {
+  display: flex;
+  flex-direction: column;
+  flex: 0.6;
+  height: 100vh;
+  background: #f3f8ff;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
+}
+
+.sidemenu__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #fff;
+  height: 75px;
+  padding: 0 1.25rem 0 0;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.header_button {
+  width: 64px;
+  height: 50px;
+  padding: 10px;
+  background: transparent;
+  color: #333;
+  border: none;
+  cursor: pointer;
+}
+
+.header__title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.sidemenu__buttons{
+  position: relative;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  padding: 0 25px;
+  color: #1a1a1a;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  border: none;
+}
+
+.sidemenu__buttons:hover{
+  background-color:rgb(182, 187, 196, 0.8)
+}
+.sidemenu__buttons-active {
+  background-color: #FF004D;
+  color: #fff;
+}
+
+.button__icon{
+  font-size: 24px;
+}
