@@ -2,7 +2,7 @@ import pandas as pd
 import unidecode
 
 
-## Todo - Carga los datos de los archivos excel en dataframes : 
+## Todo : Carga los datos de los archivos excel en dataframes  
 class LoadData:
     
     def load_data(self, route):
