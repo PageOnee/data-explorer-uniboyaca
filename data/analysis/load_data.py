@@ -4,7 +4,7 @@ import unicodedata
 ## Todo : Cargar los datos de los archivos excel en dataframes
 class LoadData:
     
-    def load_data(route):
+    def load_data(self, route):
         
         try :
                 
@@ -19,11 +19,12 @@ class LoadData:
             
             # **  Nomaliza el texto - (Omitir acentuacion)
             for column in df.columns:
-                df[column] = df[column].apply(lambda x: unicodedata(x) if isinstance(x, str) else x)
-                
+                df[column] = df[column].apply(lambda x: unicodedata.normalize('NFKD', x) if isinstance(x, str) else x)
+                        
+            print('Exito : Archivo cargado exitosamente')
             return df
           
         except FileNotFoundError as e:
             
-            print('Error : El archivo no se ha encontrado')
+            print('Error : El archivo no se ha encontrado en la ruta especificada')
             return None
