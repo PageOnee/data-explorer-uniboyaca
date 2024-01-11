@@ -5,7 +5,7 @@ from .load_data import LoadData
 from .methods import Methods
 
 
-## Todo - Realiza la automatización del analisis de datos : 
+## Todo : Realiza la automatización del analisis de datos 
 class Analysis:
     
     def analysis_data(self):
@@ -21,22 +21,13 @@ class Analysis:
         # ** Elimina columnas excedentes
         columns_delete = ['Nombre','JustificacionTiempoIngresoPost','JustificacionRecomendacion','Comentarios','ServiciosBienestarPostgrado','ServiciosAdicionalesPostgrado']
         df_count = df.drop(columns_delete, axis=1)
+            
+        # ** Realiza el conteo
+        columns_to_count = df_count.columns[:10]
+        data_dic = Methods.count_data(df_count, columns_to_count)
         
-        # ** Cuenta el numero de columnas
-        num_columns = len(df_count.columns)
-        print ('Numero de Columnas es : ', num_columns)
-        
-        # ** Realiza el conteo de
-        df_data = Methods.count_data(df_count,'Sede')
-        print('DataFrame : ')
-        print(df_data)
-        
-        # ** Convertir el DataFrame
-        data_dic = df_data.to_dict()
-        print('Diccionario : ')
-        print(data_dic)
-        
-        data_response = json.dumps({'sede': data_dic}, indent=2)
+        # ** Convertir el DataFrame    
+        data_response = json.dumps(data_dic, ensure_ascii=False, indent=2)
         print('JSON : ')
         print(data_response)
         
