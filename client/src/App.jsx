@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { WavyContainer } from "react-wavy-transitions";
-import { UserRegister } from "./pages/auth/register/UserRegister";
-import { Login } from "./pages/auth/login/Login";
 import { Home } from "./pages/data/home/Home";
+import { Login } from "./pages/auth/login/Login";
+import { UserRegister } from "./pages/auth/register/UserRegister";
+import { NotFoundPage } from "./pages/notFoundPage/NotFoundPage";
 import "./styles/App.css";
 
 function App() {
@@ -11,9 +12,10 @@ function App() {
       <WavyContainer />
       <Routes>
         <Route path="/" element={<Navigate to="/inicio-sesion" />} />
-        <Route path="registro-usuario" element={<UserRegister />} />
-        <Route path="inicio-sesion" element={<Login />} />
         <Route path="inicio" element={<Home />} />
+        <Route path="inicio-sesion" element={<Login />} />
+        <Route path="registro-usuario" element={<UserRegister />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );
