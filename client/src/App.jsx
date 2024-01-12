@@ -10,7 +10,7 @@ function App() {
     <BrowserRouter>
       <WavyContainer />
       <Routes>
-        <Route path="/" element={<Navigate to="/inicio" />} />
+        <Route path="/" element={<Navigate to="/inicio-sesion" />} />
         <Route path="registro-usuario" element={<UserRegister />} />
         <Route path="inicio-sesion" element={<Login />} />
         <Route path="inicio" element={<Home />} />
