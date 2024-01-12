@@ -1,30 +1,30 @@
+import { useState } from "react";
 import {
   MdMenu,
   MdOutlineHome,
   MdOutlineHelpOutline,
   MdOutlineSettings,
 } from "react-icons/md";
-import { TbReportAnalytics, TbReport, TbFileReport   } from "react-icons/tb";
-
+import { TbReportAnalytics, TbReport, TbFileReport } from "react-icons/tb";
 import "./SideMenu.css";
-import { useState } from "react";
 
+// ** Items del menu :
 const menuItems = [
   {
     name: "Inicio",
     icon: <MdOutlineHome />,
   },
   {
-    name:"Reporte General",
-    icon:<TbReportAnalytics />,
+    name: "Reporte General",
+    icon: <TbReportAnalytics />,
   },
   {
-    name:"Reporte Anual",
-    icon:<TbReport />,
+    name: "Reporte Anual",
+    icon: <TbReport />,
   },
   {
-    name:"Reporte Semestral",
-    icon:<TbFileReport />,
+    name: "Reporte Semestral",
+    icon: <TbFileReport />,
   },
   {
     name: "Ayuda",
@@ -36,26 +36,26 @@ const menuItems = [
   },
 ];
 
-// ** Header del Menu
-const NavHeader = () => (
-  <header className="sidemenu__header">
-    <button type="button" className="header_button">
-      <MdMenu size={25} />
+// ** Header del Menu :
+const MenuHeader = () => (
+  <header className="side-menu__header">
+    <button type="button" className="header__btn-menu">
+      <MdMenu size={28} />
     </button>
-    <span className="header__title">Explorador de Datos</span>
+    <h1 className="header__title-menu">Explorador de Datos</h1>
   </header>
 );
 
-// ** Botones del Navegador
-const NavButton = ({ onClick, name, icon, isActive, hasSubNav }) => (
+// ** Items del Menu :
+const NavButton = ({ onClick, name, icon, isActive}) => (
   <button
     type="button"
     onClick={() => onClick(name)}
-    className={`sidemenu__buttons ${
-      isActive ? "sidemenu__buttons-active" : ""
+    className={`side-menu__btn ${
+      isActive ? "side-menu__btn-active" : ""
     }`}
   >
-    {icon && <span className="button__icon">{icon}</span>}
+    {icon && <span className="btn__icon-items">{icon}</span>}
     <span>{name}</span>
   </button>
 );
@@ -69,8 +69,8 @@ export const SideMenu = () => {
   };
 
   return (
-    <aside className="sidemenu">
-      <NavHeader />
+    <aside className="side-menu">
+      <MenuHeader />
       {menuItems.map((item) => (
         <NavButton
           key={item.name}
@@ -78,7 +78,6 @@ export const SideMenu = () => {
           name={item.name}
           icon={item.icon}
           isActive={activeItem === item.name}
-          hasSubNav={!!item.items}
         />
       ))}
     </aside>

@@ -1,8 +1,8 @@
-
-.sidemenu {
+.side-menu {
   display: flex;
   flex-direction: column;
-  flex: 0.6;
+  flex: 5%;
+  position: relative;
   height: 100vh;
   background: #f3f8ff;
   border-top-right-radius: 30px;
@@ -10,7 +10,7 @@
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
 }
 
-.sidemenu__header {
+.side-menu__header {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -20,7 +20,7 @@
   border-bottom: 1px solid #e1e1e1;
 }
 
-.header_button {
+.header__btn-menu {
   width: 64px;
   height: 50px;
   padding: 10px;
@@ -30,12 +30,12 @@
   cursor: pointer;
 }
 
-.header__title {
-  font-size: 18px;
+.header__title-menu {
+  font-size: 22px;
   font-weight: bold;
 }
 
-.sidemenu__buttons{
+.side-menu__btn {
   position: relative;
   display: flex;
   gap: 16px;
@@ -54,14 +54,15 @@
   border: none;
 }
 
-.sidemenu__buttons:hover{
-  background-color:rgb(182, 187, 196, 0.8)
+.side-menu__btn:hover {
+  background-color: rgb(182, 187, 196, 0.8);
 }
-.sidemenu__buttons-active {
-  background-color: #FF004D;
+
+.side-menu__btn-active {
+  background-color: #ff004d;
   color: #fff;
 }
 
-.button__icon{
+.btn__icon-items {
   font-size: 24px;
 }
