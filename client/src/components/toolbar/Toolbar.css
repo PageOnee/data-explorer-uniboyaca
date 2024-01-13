@@ -1,0 +1,14 @@
+.toolbar{
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+    border-bottom: 1px solid #e1e1e1;
+    justify-content: space-around;
+}
+
+.toolbar__information-drop{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
