@@ -1,0 +1,11 @@
+.semester-report {
+  display: flex;
+  flex-direction: row;
+  background: #eff0f6;
+}
+
+.semester-report__content {
+  flex: 78%;
+  display: flex;
+  flex-direction: column;
+}
