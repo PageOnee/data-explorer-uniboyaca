@@ -4,10 +4,16 @@ from .analysis.analysis import Analysis
 from rest_framework import status
 
 
-## Todo : Vista para la operaciones de 'Data'
+### Todo : Vista para las operaciones de 'Data'
 class DataView(APIView):
     
-    def get(self, request):
+    ## ? Funcion : Realiza el llamado de la clase que aloja el Analisis de Datos
+    def get(self, request, level=None, interval=None, lapse=None):
         
-        data = Analysis().analysis_data()
+        try:    
+            data = Analysis().analysis_data(level, interval, lapse)
+        
+        except Exception as e:    
+            return Response({'error': f'Error al procesar los parámetros: {str(e)}'}, status=status.HTTP_400_BAD_REQUEST)
+        
         return Response(data, status=status.HTTP_200_OK)
