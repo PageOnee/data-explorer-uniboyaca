@@ -4,5 +4,5 @@ from .views import DataView
 
 ## Todo : Urls de la app 'Data'
 urlpatterns = [
-    path('api/data/', DataView.as_view()),
+    path('api/data/<str:level>/<str:interval>/<str:lapse>/', DataView.as_view()),  # Con tres parámetros
 ]
