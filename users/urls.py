@@ -4,7 +4,7 @@ from rest_framework import routers
 from users import views
 
 
-## Todo : Definicion de las rutas de la API
+### Todo : Definicion de las rutas de la API 'Usuarios'
 router = routers.DefaultRouter()
 router.register(r'users', views.UserView, 'users')
 
