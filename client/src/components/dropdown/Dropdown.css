@@ -1,0 +1,33 @@
+.dropdown{
+    width: 200px;
+    height: 40px;
+    user-select: none;
+    
+}
+
+.dropdown__btn{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: #EDEDED;
+    cursor: pointer;
+
+}
+
+.dropdown__content{
+    padding: 10px;
+    background: #EDEDED;
+    box-shadow: 3px 3px 10px 6px rgb(0, 0, 0, 0.06);
+    font-weight: 500;
+    color: #333;
+}
+
+.content__item{
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0,2s;
+}
+.content__item:hover{
+    background: red;
+}
