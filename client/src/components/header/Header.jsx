@@ -9,7 +9,7 @@ export const Header = ({ title }) => {
 
       <div className="header__user-container">
         <img
-          src="../../../public/assets/images/predefined-user.jpg"
+          src="/assets/images/predefined-user.jpg"
           alt="Foto de Perfil del Usuario"
         />
         <p>Maicol Rojas</p>
