@@ -10,3 +10,6 @@ __pycache__
 # ** Archivos Migrations :
 users/migrations
 data/migrations
+
+# ** Archivos de Datos 
+data/analysis/resources
