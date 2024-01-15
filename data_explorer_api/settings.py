@@ -15,7 +15,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Todo : Definicion de Aplicaciones
+# Definicion de Aplicaciones
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -23,17 +23,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders', # ? -> Cors Headers : Puertos 
-    'rest_framework', # ? -> Django Rest Framework
-    'coreapi', # ? -> Documentacion API Rest
-    'users' # ? -> App 'Users'
+    'corsheaders', # Cors Headers 
+    'rest_framework', # Django Rest Framework
+    'coreapi', # Documentacion API Rest
+    'users', # Api Usuarios
+    'data' # Api Datos
 ]
 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    "corsheaders.middleware.CorsMiddleware", # ? -> Cors Headers : Puertos
+    "corsheaders.middleware.CorsMiddleware", # Cors Headers
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -116,13 +117,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Todo:  Autenticacion / Autorizacion Cors
+# Autenticacion / Autorizacion Cors
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173"
 ]
 
 
-# Todo: Modulo de AutoDocumentacion
+# Modulo de AutoDocumentacion
 REST_FRAMEWORK = {
      "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
 }
