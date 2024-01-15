@@ -3,6 +3,7 @@ import { WavyContainer } from "react-wavy-transitions";
 import { Home } from "./pages/data/home/Home";
 import { Login } from "./pages/auth/login/Login";
 import { UserRegister } from "./pages/auth/register/UserRegister";
+import { SemesterReport } from "./pages/data/semesterReport/SemesterReport";
 import { NotFoundPage } from "./pages/notFoundPage/NotFoundPage";
 import "./styles/App.css";
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="inicio" element={<Home />} />
         <Route path="inicio-sesion" element={<Login />} />
         <Route path="registro-usuario" element={<UserRegister />} />
+        <Route path="reporte-semestral" element={<SemesterReport />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
