@@ -1,8 +1,20 @@
 .home {
   display: flex;
-  width: 100vw;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  background: #f9f5f6;
+  flex-direction: row;
+  background: #eff0f6;
+}
+
+.home__columns{
+  flex: 78%;
+  display: flex;
+  flex-direction: column;
+}
+
+.columns__container-charts{
+  display: grid;
+  margin: 20px 20px;
+  flex: 100;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-rows: minmax(180px,auto);
 }
