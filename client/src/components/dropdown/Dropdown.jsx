@@ -2,8 +2,6 @@ import { useState } from "react";
 import { IoIosArrowDropdown } from "react-icons/io";
 import "./Dropdown.css";
 
-// ... (código existente)
-
 export const Dropdown = ({ selected, setSelected, onSelect }) => {
   const [isActive, setIsActive] = useState(false);
   const options = ["Informacion Personal", "Informacion Familiar"];
@@ -11,7 +9,7 @@ export const Dropdown = ({ selected, setSelected, onSelect }) => {
   return (
     <div className="dropdown">
       <div className="dropdown__btn" onClick={(e) => setIsActive(!isActive)}>
-        Selecione
+        Seleccione
         <IoIosArrowDropdown />
       </div>
       {isActive && (
@@ -29,7 +27,6 @@ export const Dropdown = ({ selected, setSelected, onSelect }) => {
                 }
                 setSelected(option);
                 setIsActive(false);
-                // Llama a la función en el componente padre
                 onSelect(option);
               }}
               className="content__item"
