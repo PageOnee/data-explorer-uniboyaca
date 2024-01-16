@@ -6,3 +6,6 @@ const dataApi = axios.create({
 
 // ** Traer todos los usuarios
 export const getAllData = () => dataApi.get("/");
+
+export const getInformacionPersonal = () =>
+  dataApi.get("/pregrado/semester/2022-2/informacion-personal");
