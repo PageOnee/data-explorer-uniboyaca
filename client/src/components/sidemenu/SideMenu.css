@@ -59,6 +59,8 @@
 
 .side-menu__btn:not(.side-menu__btn-active):hover {
   background: #cfd2cf;
+  font-weight: bold;
+  transition: all 0.2s;
 }
 .side-menu__btn-active {
   background-color: #ff0303;
