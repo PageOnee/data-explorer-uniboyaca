@@ -4,23 +4,24 @@
   justify-content: space-between;
   align-items: center;
   height: 75px;
-  background: #fff;
+  background: #ffffff;
   border-bottom: 1px solid #e1e1e1;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
 }
 
 .header__title-header {
-  padding: 0 20px;
+  padding: 0 40px;
 }
 
 .header__title-header h2 {
-  font-size: 28px;
+  font-size: 22px;
 }
 
 .header__user-container {
   display: flex;
   position: relative;
-  padding: 0 20px;
   align-items: center;
+  padding: 0 40px;
   gap: 10px;
 }
 
@@ -33,5 +34,5 @@
 
 .header__user-container p {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: normal;
 }

@@ -1,5 +1,7 @@
+import { FaSortDown } from "react-icons/fa";
 import "./Header.css";
 
+// * Componente cabecera :
 export const Header = ({ title }) => {
   return (
     <div className="header">
@@ -8,11 +10,9 @@ export const Header = ({ title }) => {
       </div>
 
       <div className="header__user-container">
-        <img
-          src="/assets/images/predefined-user.jpg"
-          alt="Foto de Perfil del Usuario"
-        />
         <p>Maicol Rojas</p>
+        <img src="/assets/images/predefined-user.jpg" alt="Foto de Perfil del Usuario" />
+        <FaSortDown />
       </div>
     </div>
   );
