@@ -8,7 +8,7 @@ import {
 import { TbReportAnalytics, TbReport, TbFileReport } from "react-icons/tb";
 import "./SideMenu.css";
 
-// ** Items del menu :
+// * Items :
 const menuItems = [
   {
     name: "Inicio",
@@ -36,7 +36,7 @@ const menuItems = [
   },
 ];
 
-// ** Header del Menu :
+// * Header del menu :
 const MenuHeader = () => (
   <header className="side-menu__header">
     <button type="button" className="header__btn-menu">
@@ -46,25 +46,23 @@ const MenuHeader = () => (
   </header>
 );
 
-// ** Items del Menu :
-const NavButton = ({ onClick, name, icon, isActive}) => (
+// * Botones del menu :
+const NavButton = ({ onClick, name, icon, isActive }) => (
   <button
     type="button"
     onClick={() => onClick(name)}
-    className={`side-menu__btn ${
-      isActive ? "side-menu__btn-active" : ""
-    }`}
+    className={`side-menu__btn ${isActive ? "side-menu__btn-active" : ""}`}
   >
     {icon && <span className="btn__icon-items">{icon}</span>}
     <span>{name}</span>
   </button>
 );
 
+// * Componente menu lateral :
 export const SideMenu = () => {
   const [activeItem, setActiveItem] = useState("");
 
   const handleClick = (item) => {
-    console.log("Item Activo ", activeItem);
     setActiveItem(item !== activeItem ? item : "");
   };
 

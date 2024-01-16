@@ -4,8 +4,8 @@
   flex: 5%;
   position: relative;
   height: 100vh;
-  background: #f3f8ff;
-  border-bottom-right-radius: 30px;
+  gap: 5px;
+  background: #f9f9f9;
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
 }
 
@@ -13,9 +13,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  background: #fff;
+  width: 100%;
   height: 75px;
   padding: 0 1.25rem 0 0;
+  background: #ffffff;
   border-bottom: 1px solid #e1e1e1;
 }
 
@@ -24,14 +25,15 @@
   height: 50px;
   padding: 10px;
   background: transparent;
-  color: #333;
   border: none;
   cursor: pointer;
+  color: #1a120b;
 }
 
 .header__title-menu {
   font-size: 22px;
   font-weight: bold;
+  color: #1a120b;
 }
 
 .side-menu__btn {
@@ -41,24 +43,25 @@
   align-items: center;
   height: 50px;
   width: 100%;
+  padding: 0 25px;
+  gap: 16px;
+  cursor: pointer;
+  text-align: left;
   font-family: inherit;
   font-size: 16px;
   font-weight: 400;
   line-height: 1;
-  padding: 0 25px;
-  color: #1a1a1a;
+  color: #272829;
   background: transparent;
-  cursor: pointer;
-  text-align: left;
   border: none;
+  border-radius: 10px;
 }
 
-.side-menu__btn:hover {
-  background-color: rgb(182, 187, 196, 0.8);
+.side-menu__btn:not(.side-menu__btn-active):hover {
+  background: #cfd2cf;
 }
-
 .side-menu__btn-active {
-  background-color: #ff004d;
+  background-color: #ff0303;
   color: #fff;
 }
 
