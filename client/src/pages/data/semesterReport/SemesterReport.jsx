@@ -3,7 +3,6 @@ import { SideMenu } from "../../../components/sidemenu/SideMenu";
 import { Header } from "../../../components/header/Header";
 import { Toolbar } from "../../../components/toolbar/Toolbar";
 import { ChartBox } from "../../../components/chartbox/ChartBox";
-import { barChartBoxVisit } from "../../../services/data";
 import { getInformacionPersonal } from "../../../services/data.api";
 import "./SemesterReport.css";
 
@@ -29,6 +28,9 @@ export const SemesterReport = () => {
           const cantObjetos = Object.keys(response.data).length;
           setNumObjetos(cantObjetos); // Actualizar el estado de numObjetos
           console.log("Número de 'objetos':", numObjetos);
+          console.log("Informacion Personal:");
+          console.log("Informacion Personal:", informacionPersonal);
+
         })
         .catch((error) => {
           console.error("Error al obtener Informacion Personal:", error);
@@ -37,9 +39,30 @@ export const SemesterReport = () => {
   }, [selectedOption]); // Se ejecutará cada vez que selectedOption cambie
 
   const chartBoxes = [];
-  for (let i = 0; i < numObjetos; i++) {
-    chartBoxes.push(<ChartBox key={i} {...barChartBoxVisit} />);
-  }
+if (informacionPersonal) {
+  // Recorrer las claves del objeto de información personal
+  Object.keys(informacionPersonal).forEach((category, index) => {
+    const chartData = [];
+    // Crear el array de datos para la gráfica
+    Object.keys(informacionPersonal[category]).forEach((key) => {
+      chartData.push({
+        name: key,
+        value: informacionPersonal[category][key],
+      });
+    });
+
+    // Crear el ChartBox dinámicamente con los datos de la API
+    chartBoxes.push(
+      <ChartBox
+        key={index}
+        title={category}
+        color={`#${Math.floor(Math.random() * 16777215).toString(16)}`} // Generar un color aleatorio
+        dataKey="value"
+        chartData={chartData}
+      />
+    );
+  });
+}
 
   return (
     <div className="semester-report">
