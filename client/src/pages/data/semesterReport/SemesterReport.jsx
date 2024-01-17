@@ -8,25 +8,31 @@ import { getInfo } from "../../../services/data.api";
 import "./SemesterReport.css";
 
 export const SemesterReport = () => {
-  const [selectedOption, setSelectedOption] = useState("Informacion Personal");
   const [informacionPersonal, setInformacionPersonal] = useState(null);
+  const [informationSelected, setInformationSelected] = useState("Informacion Personal");
+  const [lapseSelected, setLapseSelected] = useState("2022-2");
 
-  // * Item Seleccionado Dropdown :
-  const handleDropdownSelection = (selectedOption) => {
-    setSelectedOption(selectedOption);
-    console.log('Click: ' ,selectedOption)
-  };
+ // * Item Seleccionado Dropdown :
+ const handleDropdownSelection = (selectedOption, dropdownType) => {
+  if (dropdownType === "information") {
+    setInformationSelected(selectedOption);
+    console.log('Información Seleccionada: ', selectedOption);
+  } else if (dropdownType === "lapse") {
+    setLapseSelected(selectedOption);
+    console.log('Lapso Seleccionado: ', selectedOption);
+  }
+};
 
   // * Cargar datos del Api :
   useEffect(() => {
-    getInfo(selectedOption) 
+    getInfo(lapseSelected, informationSelected) 
       .then((response) => {
         setInformacionPersonal(response.data);
       })
       .catch((error) => {
         console.error("Error al obtener Informacion Personal:", error);
       });
-  }, [selectedOption]);
+  }, [lapseSelected, informationSelected]);
 
   const chartBoxes = [];
   if (informacionPersonal) {
