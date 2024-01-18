@@ -1,7 +1,7 @@
 .semester-report {
   display: flex;
   flex-direction: row;
-  background: #EFF0F6;
+  background: #eff0f6;
 }
 
 .semester-report__content {

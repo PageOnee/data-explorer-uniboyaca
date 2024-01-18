@@ -3,55 +3,59 @@ import { SideMenu } from "../../../components/sidemenu/SideMenu";
 import { Header } from "../../../components/header/Header";
 import { Toolbar } from "../../../components/toolbar/Toolbar";
 import { ChartBox } from "../../../components/chartBox/ChartBox";
-import { levelItems } from "../../../data/titleInformationPersonal";
+import { levelItems } from "../../../data/chartsNames";
 import { getInfo } from "../../../services/data.api";
 import "./SemesterReport.css";
 
+// Todo : Pagina reporte semestral
 export const SemesterReport = () => {
-  const [informacionPersonal, setInformacionPersonal] = useState(null);
-  const [informationSelected, setInformationSelected] = useState("Informacion Personal");
+  // * Variables controladoras
+  const [data, setdata] = useState(null);
   const [lapseSelected, setLapseSelected] = useState("2022-2");
+  const [categorySelected, setcategorySelected] = useState("Informacion Personal");
 
- // * Item Seleccionado Dropdown :
- const handleDropdownSelection = (selectedOption, dropdownType) => {
-  if (dropdownType === "information") {
-    setInformationSelected(selectedOption);
-    console.log('Información Seleccionada: ', selectedOption);
-  } else if (dropdownType === "lapse") {
-    setLapseSelected(selectedOption);
-    console.log('Lapso Seleccionado: ', selectedOption);
-  }
-};
+  // * Dropdown - Item seleccionado
+  const handleDropdownSelection = (selectedOption, dropdownType) => {
+    if (dropdownType === "category") {
+      setcategorySelected(selectedOption);
+      console.log("Categoria Seleccionada : ", selectedOption);
+    } else if (dropdownType === "lapse") {
+      setLapseSelected(selectedOption);
+      console.log("Lapso Seleccionado : ", selectedOption);
+    }
+  };
 
-  // * Cargar datos del Api :
+  // * Cargar datos de la Api
   useEffect(() => {
-    getInfo(lapseSelected, informationSelected) 
+    getInfo(lapseSelected, categorySelected)
       .then((response) => {
-        setInformacionPersonal(response.data);
+        setdata(response.data);
       })
       .catch((error) => {
         console.error("Error al obtener Informacion Personal:", error);
       });
-  }, [lapseSelected, informationSelected]);
+  }, [lapseSelected, categorySelected]);
 
+  // * Crea los Charts Boxes
   const chartBoxes = [];
-  if (informacionPersonal) {
-    Object.keys(informacionPersonal).forEach((category, index) => {
+  if (data) {
+    Object.keys(data).forEach((category, index) => {
       const chartData = [];
-      Object.keys(informacionPersonal[category]).forEach((key) => {
+      Object.keys(data[category]).forEach((key) => {
         chartData.push({
           name: key,
-          value: informacionPersonal[category][key],
+          value: data[category][key],
         });
       });
 
+      // * Titulo de las graficas
       const title = levelItems[index] ? levelItems[index].name : `Title ${index + 1}`;
 
       chartBoxes.push(
         <ChartBox
           key={index}
           title={title}
-          color={`#${Math.floor(Math.random() * 16777215).toString(16)}`}
+          color={`#${Math.floor(Math.random() * 0xCCCCCC).toString(16)}`}
           dataKey="value"
           chartData={chartData}
         />
@@ -63,7 +67,7 @@ export const SemesterReport = () => {
     <div className="semester-report">
       <SideMenu />
       <div className="semester-report__content">
-        <Header title={"Reporte Semestral"} />
+        <Header title={`Reporte Semestral ${lapseSelected}`} />
         <Toolbar onSelect={handleDropdownSelection} />
         <div className="content__charts-box">{chartBoxes}</div>
       </div>
