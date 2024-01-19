@@ -1,7 +1,7 @@
 import { FaSortDown } from "react-icons/fa";
 import "./Header.css";
 
-// * Componente cabecera :
+// Todo : Componente cabecera 
 export const Header = ({ title }) => {
   return (
     <div className="header">
