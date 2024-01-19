@@ -84,6 +84,9 @@ export const perceptionItems = [
     name: "Satisfaccion Whatsapp",
   },
   {
+    name: "Satisfaccion Messenger",
+  },
+  {
     name: "Satisfaccion Correo Electronico",
   },
   {
