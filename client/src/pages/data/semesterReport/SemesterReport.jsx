@@ -3,7 +3,11 @@ import { SideMenu } from "../../../components/sidemenu/SideMenu";
 import { Header } from "../../../components/header/Header";
 import { Toolbar } from "../../../components/toolbar/Toolbar";
 import { ChartBox } from "../../../components/chartBox/ChartBox";
-import { levelItems } from "../../../data/chartsNames";
+import {
+  personalInformationItems,
+  previusEducationItems,
+  perceptionItems,
+} from "../../../data/chartsNames";
 import { getInfo } from "../../../services/data.api";
 import "./SemesterReport.css";
 
@@ -11,6 +15,7 @@ import "./SemesterReport.css";
 export const SemesterReport = () => {
   // * Variables controladoras
   const [data, setdata] = useState(null);
+  const [periodSelected, setPeriodSelected] = useState("Semestral");
   const [lapseSelected, setLapseSelected] = useState("2022-2");
   const [categorySelected, setcategorySelected] = useState("Informacion Personal");
 
@@ -22,19 +27,22 @@ export const SemesterReport = () => {
     } else if (dropdownType === "lapse") {
       setLapseSelected(selectedOption);
       console.log("Lapso Seleccionado : ", selectedOption);
+    } else if (dropdownType === "period") {
+      setPeriodSelected(selectedOption);
+      console.log("Periodo Seleccionado : ", selectedOption);
     }
   };
 
   // * Cargar datos de la Api
   useEffect(() => {
-    getInfo(lapseSelected, categorySelected)
+    getInfo(periodSelected, lapseSelected, categorySelected)
       .then((response) => {
         setdata(response.data);
       })
       .catch((error) => {
         console.error("Error al obtener Informacion Personal:", error);
       });
-  }, [lapseSelected, categorySelected]);
+  }, [periodSelected, lapseSelected, categorySelected]);
 
   // * Crea los Charts Boxes
   const chartBoxes = [];
@@ -48,14 +56,20 @@ export const SemesterReport = () => {
         });
       });
 
-      // * Titulo de las graficas
-      const title = levelItems[index] ? levelItems[index].name : `Title ${index + 1}`;
+      const title =
+        categorySelected === "Informacion Personal"
+          ? personalInformationItems[index]?.name || `Title ${index + 1}`
+          : categorySelected === "Educacion Previa"
+          ? previusEducationItems[index]?.name || `Title ${index + 1}`
+          : categorySelected === "Percepcion y Satisfaccion"
+          ? perceptionItems[index]?.name || `Title ${index + 1}`
+          : `Title ${index + 1}`;
 
       chartBoxes.push(
         <ChartBox
           key={index}
           title={title}
-          color={`#${Math.floor(Math.random() * 0xCCCCCC).toString(16)}`}
+          color={`#${Math.floor(Math.random() * 0xcccccc).toString(16)}`}
           dataKey="value"
           chartData={chartData}
         />
