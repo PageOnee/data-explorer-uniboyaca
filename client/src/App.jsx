@@ -4,7 +4,10 @@ import { Home } from "./pages/data/home/Home";
 import { Login } from "./pages/auth/login/Login";
 import { UserRegister } from "./pages/auth/register/UserRegister";
 import { SemesterReport } from "./pages/data/semesterReport/SemesterReport";
-import { NotFoundPage } from "./pages/notFoundPage/NotFoundPage";
+import { AnnualReport } from "./pages/data/annualReport/AnnualReport";
+import { GeneralReport } from "./pages/data/generalReport/GeneralReport";
+import { Support } from "./pages/support/Support";
+import { NotFound } from "./pages/notFound/NotFound";
 import "./styles/App.css";
 
 function App() {
@@ -17,7 +20,10 @@ function App() {
         <Route path="inicio-sesion" element={<Login />} />
         <Route path="registro-usuario" element={<UserRegister />} />
         <Route path="reporte-semestral" element={<SemesterReport />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="reporte-anual" element={<AnnualReport />} />
+        <Route path="reporte-general" element={<GeneralReport />} />
+        <Route path="ayuda" element={<Support />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
