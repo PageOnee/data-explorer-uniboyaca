@@ -14,28 +14,16 @@ export const Toolbar = ({ onSelect }) => {
   // * Variables controladoras
   const [orderSelected, setOrderSelected] = useState("");
   const [levelSelected, setLevelSelected] = useState("");
-  const [periodSelected, setperiodSelected] = useState("");
+  const [periodSelected, setPeriodSelected] = useState("");
   const [lapseSelected, setLapseSelected] = useState("");
   const [categorySelected, setcategorySelected] = useState("");
 
   return (
     <div className="toolbar">
-      {/* Menu desplegable - Ordenar informacion */}
-      <div className="toolbar__dropdown">
-        <p> Ordenar Por : </p>
-
-        <Dropdown
-          selected={orderSelected}
-          setSelected={setOrderSelected}
-          onSelect={onSelect}
-          items={orderItems}
-        />
-      </div>
-
+    
       {/* Menu desplegable - Nivel de estudios */}
       <div className="toolbar__dropdown">
-        <p> Nivel : </p>
-
+        <p> Nivel Academico : </p>
         <Dropdown
           selected={levelSelected}
           setSelected={setLevelSelected}
@@ -46,11 +34,10 @@ export const Toolbar = ({ onSelect }) => {
 
       {/* Menu desplegable - Intervalo del Analisis */}
       <div className="toolbar__dropdown">
-        <p> Periodo : </p>
-
+        <p> Periodo del Analisis : </p>
         <Dropdown
           selected={periodSelected}
-          setSelected={setperiodSelected}
+          setSelected={setPeriodSelected}
           onSelect={(selectedOption) => onSelect(selectedOption, "period")}
           items={periodItems}
         />
@@ -58,8 +45,7 @@ export const Toolbar = ({ onSelect }) => {
 
       {/* Menu desplegable - Lapso de Tiempo */}
       <div className="toolbar__dropdown">
-        <p> Lapso : </p>
-
+        <p> Ciclo de Estudio : </p>
         <Dropdown
           selected={lapseSelected}
           setSelected={setLapseSelected}
@@ -70,13 +56,23 @@ export const Toolbar = ({ onSelect }) => {
 
       {/* Menu desplegable - Categoria  */}
       <div className="toolbar__dropdown">
-        <p> Filtrar Informacion Por : </p>
-
+        <p> Filtrar Por : </p>
         <Dropdown
           selected={categorySelected}
           setSelected={setcategorySelected}
           onSelect={(selectedOption) => onSelect(selectedOption, "category")}
           items={categoryItems}
+        />
+      </div>
+
+      {/* Menu desplegable - Ordenar informacion */}
+      <div className="toolbar__dropdown">
+        <p> Ordenar Por : </p>
+        <Dropdown
+          selected={orderSelected}
+          setSelected={setOrderSelected}
+          onSelect={(selectedOption) => onSelect(selectedOption, "order")}
+          items={orderItems}
         />
       </div>
     </div>
