@@ -1,11 +1,16 @@
 import axios from "axios";
 
+// Todo : Conexion con la api -> Dsata
 const dataApi = axios.create({
   baseURL: "http://localhost:8000/data-explorer/api/data/",
 });
 
-// ** Traer todos los usuarios
 export const getAllData = () => dataApi.get("/");
 
-export const getInformacionPersonal = () =>
-  dataApi.get("/pregrado/semester/2022-2/informacion-personal");
+export const getInfoSemester = (lapsed, category) => {
+  return dataApi.get(`/Pregrado/Semestral/${lapsed}/${category}`);
+};
+
+export const getInfoAnnual = (lapsed, category) => {
+  return dataApi.get(`/pregrado/Anual/${lapsed}/${category}`);
+};
