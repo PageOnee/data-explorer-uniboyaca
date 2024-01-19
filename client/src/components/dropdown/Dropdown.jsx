@@ -2,9 +2,8 @@ import { useState } from "react";
 import { IoIosArrowDropdown } from "react-icons/io";
 import "./Dropdown.css";
 
-export const Dropdown = ({ selected, setSelected, onSelect }) => {
+export const Dropdown = ({ selected, setSelected, onSelect, items }) => {
   const [isActive, setIsActive] = useState(false);
-  const options = ["Informacion Personal", "Informacion Familiar"];
 
   return (
     <div className="dropdown">
@@ -14,24 +13,17 @@ export const Dropdown = ({ selected, setSelected, onSelect }) => {
       </div>
       {isActive && (
         <div className="dropdown__content">
-          {options.map((option) => (
+          {items.map((item, index) => (
             <div
-              key={option}
+              key={index}
               onClick={(e) => {
-                if (option === "Informacion Personal") {
-                  console.log("Informacion Personal");
-                } else if (option === "Informacion Familiar") {
-                  console.log(
-                    "Hiciste clic en Informacion Familiar. Conectando a la API..."
-                  );
-                }
-                setSelected(option);
+                setSelected(item.name);
                 setIsActive(false);
-                onSelect(option);
+                onSelect(item.name);
               }}
               className="content__item"
             >
-              {option}
+              {item.name}
             </div>
           ))}
         </div>
