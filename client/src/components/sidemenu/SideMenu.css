@@ -60,11 +60,14 @@
 .side-menu__btn:not(.side-menu__btn-active):hover {
   background: #cfd2cf;
   font-weight: bold;
-  transition: all 0.2s;
+  font-size: 17px;
+  transition: all 0.6s;
 }
+
 .side-menu__btn-active {
   background-color: #ff0303;
   color: #fff;
+  font-weight: bold;
 }
 
 .btn__icon-items {

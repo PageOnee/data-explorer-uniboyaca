@@ -1,42 +1,40 @@
 import { useState } from "react";
-import {
-  MdMenu,
-  MdOutlineHome,
-  MdOutlineHelpOutline,
-  MdOutlineSettings,
-} from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import { WavyLink } from "react-wavy-transitions";
+import { MdMenu, MdOutlineHome, MdOutlineHelpOutline } from "react-icons/md";
 import { TbReportAnalytics, TbReport, TbFileReport } from "react-icons/tb";
 import "./SideMenu.css";
 
-// * Items :
+// ! Items
 const menuItems = [
   {
     name: "Inicio",
     icon: <MdOutlineHome />,
+    path: "inicio",
   },
   {
     name: "Reporte General",
     icon: <TbReportAnalytics />,
+    path: "reporte-general",
   },
   {
     name: "Reporte Anual",
     icon: <TbReport />,
+    path: "reporte-anual",
   },
   {
     name: "Reporte Semestral",
     icon: <TbFileReport />,
+    path: "reporte-semestral",
   },
   {
     name: "Ayuda",
     icon: <MdOutlineHelpOutline />,
-  },
-  {
-    name: "Ajustes",
-    icon: <MdOutlineSettings />,
+    path: "ayuda",
   },
 ];
 
-// * Header del menu :
+// * Header del menu
 const MenuHeader = () => (
   <header className="side-menu__header">
     <button type="button" className="header__btn-menu">
@@ -46,24 +44,28 @@ const MenuHeader = () => (
   </header>
 );
 
-// * Botones del menu :
+// * Botones del menu
 const NavButton = ({ onClick, name, icon, isActive }) => (
-  <button
-    type="button"
-    onClick={() => onClick(name)}
-    className={`side-menu__btn ${isActive ? "side-menu__btn-active" : ""}`}
-  >
-    {icon && <span className="btn__icon-items">{icon}</span>}
-    <span>{name}</span>
-  </button>
+  <WavyLink color="#ff0303">
+    <button
+      type="button"
+      onClick={() => onClick(name)}
+      className={`side-menu__btn ${isActive ? "side-menu__btn-active" : ""}`}
+    >
+      {icon && <span className="btn__icon-items">{icon}</span>}
+      <span>{name}</span>
+    </button>
+  </WavyLink>
 );
 
-// * Componente menu lateral :
+// Todo : Componente menu lateral
 export const SideMenu = () => {
   const [activeItem, setActiveItem] = useState("");
+  const navigate = useNavigate();
 
   const handleClick = (item) => {
     setActiveItem(item !== activeItem ? item : "");
+    navigate(`/${item.path}`);
   };
 
   return (
@@ -72,7 +74,7 @@ export const SideMenu = () => {
       {menuItems.map((item) => (
         <NavButton
           key={item.name}
-          onClick={handleClick}
+          onClick={() => handleClick(item)}
           name={item.name}
           icon={item.icon}
           isActive={activeItem === item.name}
