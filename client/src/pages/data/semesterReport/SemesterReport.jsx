@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { SideMenu } from "../../../components/sidemenu/SideMenu";
 import { Header } from "../../../components/header/Header";
 import { Toolbar } from "../../../components/toolbar/Toolbar";
@@ -8,12 +9,13 @@ import {
   previusEducationItems,
   perceptionItems,
 } from "../../../data/chartsNames";
-import { getInfo } from "../../../services/data.api";
+import { getInfoSemester } from "../../../services/data.api";
 import "./SemesterReport.css";
 
 // Todo : Pagina reporte semestral
 export const SemesterReport = () => {
   // * Variables controladoras
+  const navigate = useNavigate();
   const [data, setdata] = useState(null);
   const [periodSelected, setPeriodSelected] = useState("Semestral");
   const [lapseSelected, setLapseSelected] = useState("2022-2");
@@ -30,19 +32,24 @@ export const SemesterReport = () => {
     } else if (dropdownType === "period") {
       setPeriodSelected(selectedOption);
       console.log("Periodo Seleccionado : ", selectedOption);
+      if (selectedOption === "Anual") {
+        navigate("/reporte-anual");
+      } else if (selectedOption === "General") {
+        navigate("/reporte-general");
+      }
     }
   };
 
   // * Cargar datos de la Api
   useEffect(() => {
-    getInfo(periodSelected, lapseSelected, categorySelected)
+    getInfoSemester(lapseSelected, categorySelected)
       .then((response) => {
         setdata(response.data);
       })
       .catch((error) => {
         console.error("Error al obtener Informacion Personal:", error);
       });
-  }, [periodSelected, lapseSelected, categorySelected]);
+  }, [lapseSelected, categorySelected]);
 
   // * Crea los Charts Boxes
   const chartBoxes = [];
