@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { WavyLink } from "react-wavy-transitions";
 import { MdMenu, MdOutlineHome, MdOutlineHelpOutline } from "react-icons/md";
 import { TbReportAnalytics, TbReport, TbFileReport } from "react-icons/tb";
 import "./SideMenu.css";
@@ -46,16 +45,14 @@ const MenuHeader = () => (
 
 // * Botones del menu
 const NavButton = ({ onClick, name, icon, isActive }) => (
-  <WavyLink color="#ff0303">
-    <button
-      type="button"
-      onClick={() => onClick(name)}
-      className={`side-menu__btn ${isActive ? "side-menu__btn-active" : ""}`}
-    >
-      {icon && <span className="btn__icon-items">{icon}</span>}
-      <span>{name}</span>
-    </button>
-  </WavyLink>
+  <button
+    type="button"
+    onClick={() => onClick(name)}
+    className={`side-menu__btn ${isActive ? "side-menu__btn-active" : ""}`}
+  >
+    {icon && <span className="btn__icon-items">{icon}</span>}
+    <span>{name}</span>
+  </button>
 );
 
 // Todo : Componente menu lateral
