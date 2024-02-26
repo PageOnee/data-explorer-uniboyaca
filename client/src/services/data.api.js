@@ -12,5 +12,9 @@ export const getInfoSemester = (lapsed, category) => {
 };
 
 export const getInfoAnnual = (lapsed, category) => {
-  return dataApi.get(`/pregrado/Anual/${lapsed}/${category}`);
+  return dataApi.get(`/Pregrado/Anual/${lapsed}/${category}`);
+};
+
+export const getInfoGeneral = (category) => {
+  return dataApi.get(`/Pregrado/General/""/${category}`);
 };

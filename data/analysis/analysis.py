@@ -8,11 +8,11 @@ class Analysis:
     ## ? Funcion : Router del Analisis de Datos 
     def analysis_data(self, level, interval, lapse, category):
         
-        if(level == 'pregrado'):
+        if(level == 'Pregrado'):
             
             data = AnalysisUnder().analysis_data_under(interval, lapse, category)
             
-        elif(level == 'posgrado'):
+        elif(level == 'Posgrado'):
             
             data = AnalysisPost().analysis_data_post(interval, lapse, category)
             

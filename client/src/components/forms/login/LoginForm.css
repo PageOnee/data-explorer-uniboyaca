@@ -20,7 +20,7 @@
   position: absolute;
   width: 180px;
   height: 140%;
-  background-color: #ff004d;
+  background-color: #ff0303;
   box-shadow: 0 0 60px #7d0a0a;
   animation: animate 4s linear infinite;
   z-index: -2;
@@ -47,7 +47,8 @@
 .form__title-login {
   font-size: 30px;
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
+  font-weight: bolder;
 }
 
 .form__input-box-login {
@@ -80,22 +81,22 @@
 }
 
 .form__remember a {
-  color: #00A9FF;
+  color: #00a9ff;
   text-decoration: none;
   font-weight: 600;
-  margin-left: 5px;
+  margin-left: 8px;
 }
 
 .form__remember a:hover {
   text-decoration: underline;
-  color: #1b3cb8;
+  color: #362fd9;
 }
 
 .form__btn-login {
   width: 100%;
   height: 45px;
   margin-top: 20px;
-  background: #ff004d;
+  background: #ff0303;
   border: none;
   outline: none;
   border-radius: 15px;
@@ -109,7 +110,7 @@
 }
 
 .form__btn-login:hover {
-  background: #c70039;
+  background: #d21312;
 }
 
 .form__register-link {
@@ -121,10 +122,10 @@
 .form__register-link .register-link__p span {
   margin-left: 10px;
   font-weight: bold;
-  color: #00A9FF;
+  color: #00a9ff;
 }
 
 .form__register-link .register-link__p span:hover {
   text-decoration: underline;
-  color: #1b3cb8;
+  color: #362fd9;
 }

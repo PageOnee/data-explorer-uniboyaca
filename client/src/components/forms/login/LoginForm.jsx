@@ -20,7 +20,7 @@ export const LoginForm = () => {
 
   // ** Metodo de inicio de sesión
   const onSubmit = async (data) => {
-    // ** Validar campos vacios
+    // Validar campos vacios
     if (!data.emailUsername && !data.password) {
       toast.error("Por favor, completa todos los campos");
       return;
@@ -87,7 +87,7 @@ export const LoginForm = () => {
         <div className="form__register-link">
           <p className="register-link__p">
             ¿ No tienes una cuenta ?
-            <WavyLink to="/registro-usuario" color="#FF004D">
+            <WavyLink to="/registro-usuario" color="#ff0303">
               <span>Crear Cuenta</span>
             </WavyLink>
           </p>
