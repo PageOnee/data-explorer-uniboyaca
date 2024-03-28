@@ -5,7 +5,7 @@ import ReactDOM from "react-dom/client";
 /// Componente principal
 import App from "./App.jsx";
 
-/// Estilos
+/// Estilos generales
 import "./styles/index.css";
 
 
