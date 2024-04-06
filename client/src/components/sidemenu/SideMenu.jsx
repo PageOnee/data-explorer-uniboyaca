@@ -1,82 +1,110 @@
+/// Librerias de angular
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { MdMenu, MdOutlineHome, MdOutlineHelpOutline } from "react-icons/md";
-import { TbReportAnalytics, TbReport, TbFileReport } from "react-icons/tb";
+
+/// Iconos
+import { MdMenu, MdOutlineHome } from "react-icons/md";
+import { TbReportAnalytics, TbFileReport, TbReport, TbReportSearch } from "react-icons/tb";
+
+// Estilos
 import "./SideMenu.css";
 
-// ! Items
+
+// Items del menu
 const menuItems = [
   {
     name: "Inicio",
     icon: <MdOutlineHome />,
-    path: "inicio",
+    path: "inicio"
   },
+  // {
+  //   name: "Reporte por Periodo",
+  //   icon: <TbReportSearch />,
+  //   path: "reporte-periodo/reporte-semestre"
+  // },
   {
-    name: "Reporte General",
-    icon: <TbReportAnalytics />,
-    path: "reporte-general",
+    name: "Reporte Semestral",
+    icon: <TbFileReport />,
+    path: "reporte-periodo/reporte-semestre"
   },
   {
     name: "Reporte Anual",
     icon: <TbReport />,
-    path: "reporte-anual",
+    path: "reporte-periodo/reporte-anual"
   },
   {
-    name: "Reporte Semestral",
-    icon: <TbFileReport />,
-    path: "reporte-semestral",
+    name: "Reporte General",
+    icon: <TbReportAnalytics />,
+    path: "reporte-periodo/reporte-general"
   },
   {
-    name: "Ayuda",
-    icon: <MdOutlineHelpOutline />,
-    path: "ayuda",
-  },
+    name: "Reporte Historico",
+    icon: <TbReportAnalytics />,
+    path: "reporte-historico"
+  }
 ];
 
-// * Header del menu
+
+// Cabecera del menu de navegacion
 const MenuHeader = () => (
-  <header className="side-menu__header">
-    <button type="button" className="header__btn-menu">
+  <header className="d-flex flex-row align-items-center p-1 sidemenu__header">
+
+    {/* Titulo */}
+    <h1 className="header__title-menu p-3">
       <MdMenu size={28} />
-    </button>
-    <h1 className="header__title-menu">Explorador de Datos</h1>
+      <span className="mx-3"> Explorador de Datos </span>
+    </h1>
+
   </header>
 );
 
-// * Botones del menu
+
+// Items del menu de navegacion
 const NavButton = ({ onClick, name, icon, isActive }) => (
   <button
     type="button"
     onClick={() => onClick(name)}
-    className={`side-menu__btn ${isActive ? "side-menu__btn-active" : ""}`}
+    className="side-menu__btn"
   >
+
     {icon && <span className="btn__icon-items">{icon}</span>}
     <span>{name}</span>
+
   </button>
 );
 
-// Todo : Componente menu lateral
+
+// Componente : Menu de navegacion lateral
 export const SideMenu = () => {
+
   const [activeItem, setActiveItem] = useState("");
   const navigate = useNavigate();
+
 
   const handleClick = (item) => {
     setActiveItem(item !== activeItem ? item : "");
     navigate(`/${item.path}`);
   };
 
+
   return (
-    <aside className="side-menu">
-      <MenuHeader />
-      {menuItems.map((item) => (
-        <NavButton
-          key={item.name}
-          onClick={() => handleClick(item)}
-          name={item.name}
-          icon={item.icon}
-          isActive={activeItem === item.name}
-        />
-      ))}
-    </aside>
+    <div className="col-12">
+      <div className="d-flex flex-column sidemenu">
+
+        <MenuHeader />
+
+        {menuItems.map((item) => (
+
+          <NavButton
+            key={item.name}
+            onClick={() => handleClick(item)}
+            name={item.name}
+            icon={item.icon}
+          />
+
+        ))}
+
+      </div>
+    </div>
   );
 };
