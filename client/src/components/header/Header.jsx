@@ -16,7 +16,7 @@ export const Header = ({ titleModule, titleSection }) => {
     <div className="col-12 d-flex flex-row justify-content-between align-items-center header">
 
       {/* Titulo de la pagina */}
-      <div className="header__title-header">
+      <div className="px-4 header__title-header">
         <h2>
           <span className=""> {titleModuleUpper} </span>
           <span className="mx-2"> / </span>
