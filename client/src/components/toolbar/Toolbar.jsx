@@ -54,6 +54,7 @@ export const Toolbar = ({ onSelect, dropdownItems, isLapseActive }) => {
         setSelected={setLapseSelected}
         onSelect={(selectedOption) => onSelect(selectedOption, "lapse")}
         items={dropdownItems.lapseItems}
+        disabled={!isLapseActive} // Agrega la propiedad disabled según el estado de isLapseActive
       />
 
 
