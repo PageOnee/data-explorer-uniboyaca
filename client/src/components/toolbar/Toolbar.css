@@ -1,18 +1,7 @@
 .toolbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  height: 45px;
-  background: #ffffff;
-  border-bottom: 1px solid #e1e1e1;
+    border-bottom: 1px solid #E1E1E1;
 }
 
-.toolbar__dropdown {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  gap: 10px;
+.toolbar p {
+    font-weight: bold;
 }

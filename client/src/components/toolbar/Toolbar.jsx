@@ -1,80 +1,71 @@
+/// Librerias de react
 import { useState } from "react";
+
+/// Componentes
 import { Dropdown } from "../dropdown/Dropdown";
-import {
-  orderItems,
-  levelItems,
-  periodItems,
-  lapseItems,
-  categoryItems,
-} from "../../data/dropdownItems";
+
+/// Estilos
 import "./Toolbar.css";
 
-// Todo : Componente barra de herramientas
-export const Toolbar = ({ onSelect }) => {
-  // * Variables controladoras
-  const [orderSelected, setOrderSelected] = useState("");
+
+// Componente :  Barra de herramientas
+export const Toolbar = ({ onSelect, dropdownItems, isLapseActive }) => {
+
+  // Nivel educacion 
   const [levelSelected, setLevelSelected] = useState("");
+
+  // Periodo
   const [periodSelected, setPeriodSelected] = useState("");
+
+  // Lapso
   const [lapseSelected, setLapseSelected] = useState("");
+
+  // Categoria
   const [categorySelected, setcategorySelected] = useState("");
 
   return (
-    <div className="toolbar">
-    
+
+    <div className="d-flex flex-row align-items-center justify-content-between py-3 toolbar">
+
       {/* Menu desplegable - Nivel de estudios */}
-      <div className="toolbar__dropdown">
-        <p> Nivel Academico : </p>
-        <Dropdown
-          selected={levelSelected}
-          setSelected={setLevelSelected}
-          onSelect={(selectedOption) => onSelect(selectedOption, "level")}
-          items={levelItems}
-        />
-      </div>
+      <p className="my-auto" > Nivel Academico: </p >
+      <Dropdown
+        selected={levelSelected}
+        setSelected={setLevelSelected}
+        onSelect={(selectedOption) => onSelect(selectedOption, "level")}
+        items={dropdownItems.levelItems}
+      />
+
 
       {/* Menu desplegable - Intervalo del Analisis */}
-      <div className="toolbar__dropdown">
-        <p> Periodo del Analisis : </p>
-        <Dropdown
-          selected={periodSelected}
-          setSelected={setPeriodSelected}
-          onSelect={(selectedOption) => onSelect(selectedOption, "period")}
-          items={periodItems}
-        />
-      </div>
+      <p className="my-auto" > Periodo del Analisis : </p>
+      <Dropdown
+        selected={periodSelected}
+        setSelected={setPeriodSelected}
+        onSelect={(selectedOption) => onSelect(selectedOption, "period")}
+        items={dropdownItems.periodItems}
+      />
+
 
       {/* Menu desplegable - Lapso de Tiempo */}
-      <div className="toolbar__dropdown">
-        <p> Ciclo de Estudio : </p>
-        <Dropdown
-          selected={lapseSelected}
-          setSelected={setLapseSelected}
-          onSelect={(selectedOption) => onSelect(selectedOption, "lapse")}
-          items={lapseItems}
-        />
-      </div>
+      <p className="my-auto" > Ciclo de Estudio : </p>
+      <Dropdown
+        selected={lapseSelected}
+        setSelected={setLapseSelected}
+        onSelect={(selectedOption) => onSelect(selectedOption, "lapse")}
+        items={dropdownItems.lapseItems}
+      />
+
 
       {/* Menu desplegable - Categoria  */}
-      <div className="toolbar__dropdown">
-        <p> Filtrar Por : </p>
-        <Dropdown
-          selected={categorySelected}
-          setSelected={setcategorySelected}
-          onSelect={(selectedOption) => onSelect(selectedOption, "category")}
-          items={categoryItems}
-        />
-      </div>
+      <p className="my-auto" > Filtrar Por : </p>
+      <Dropdown
+        selected={categorySelected}
+        setSelected={setcategorySelected}
+        onSelect={(selectedOption) => onSelect(selectedOption, "category")}
+        items={dropdownItems.categoryItems}
+      />
 
-      {/* Menu desplegable - Ordenar informacion */}
-      <div className="toolbar__dropdown">
-        <p> Ordenar Por : </p>
-        <Dropdown
-          selected={orderSelected}
-          setSelected={setOrderSelected}
-          onSelect={(selectedOption) => onSelect(selectedOption, "order")}
-          items={orderItems}
-        />
-      </div>
-    </div>
+    </div >
   );
 };
