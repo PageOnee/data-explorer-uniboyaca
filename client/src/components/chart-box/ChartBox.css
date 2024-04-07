@@ -1,0 +1,13 @@
+/* Conetenedor de las graficas */
+.chart-box {
+  height: 530px;
+  width: 450px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
+}
+
+/* Hover al contenedor */
+.chart-box:hover {
+  cursor: pointer;
+}
