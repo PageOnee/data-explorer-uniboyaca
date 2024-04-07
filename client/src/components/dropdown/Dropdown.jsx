@@ -1,19 +1,32 @@
+/// Librerias de react
 import { useState } from "react";
+
+/// Iconos
 import { IoIosArrowDropdown } from "react-icons/io";
+
+/// Estilos
 import "./Dropdown.css";
 
+
+// Componente : Elemento dropdown
 export const Dropdown = ({ selected, setSelected, onSelect, items }) => {
+
   const [isActive, setIsActive] = useState(false);
 
   return (
     <div className="dropdown">
-      <div className="dropdown__btn" onClick={(e) => setIsActive(!isActive)}>
+
+      {/* Predeterminado */}
+      <div className="d-flex flex-row align-items-center justify-content-between p-2 dropdown__btn" onClick={(e) => setIsActive(!isActive)}>
         Seleccione
         <IoIosArrowDropdown />
       </div>
+
+      {/* Contenido del dropdown */}
       {isActive && (
         <div className="dropdown__content">
           {items.map((item, index) => (
+
             <div
               key={index}
               onClick={(e) => {
@@ -25,8 +38,10 @@ export const Dropdown = ({ selected, setSelected, onSelect, items }) => {
             >
               {item.name}
             </div>
+
           ))}
         </div>
+
       )}
     </div>
   );

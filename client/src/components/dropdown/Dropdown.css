@@ -1,20 +1,19 @@
+/* Elemento dropdown */
 .dropdown {
   width: 200px;
   height: 40px;
   user-select: none;
 }
 
+/* Item predeterminado dropdown */
 .dropdown__btn {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 5px 20px;
   cursor: pointer;
   background: transparent;
   border-radius: 10px;
   border: 1px solid #e1e1e1;
 }
 
+/* Items dropdown */
 .dropdown__content {
   background: #ffffff;
   box-shadow: 3px 3px 10px 6px rgb(0, 0, 0, 0.06);
@@ -23,20 +22,24 @@
   font-weight: 500;
 }
 
+/* Item */
 .content__item {
-  padding: 10px 10px;
-  cursor: pointer;
+  padding: 12px 10px;
   border-bottom: 1px solid #e1e1e1;
+  cursor: pointer;
   text-align: center;
   transition: all 0, 2s;
 }
 
+/* Hover al dropdown */
 .dropdown__btn:hover {
   background: #cfd2cf;
+  font-weight: bold;
 }
 
+/* Hover al item de dropdown */
 .content__item:hover {
   background: #cfd2cf;
-  font-weight: bold;
   transition: all 0.5s;
+  font-weight: bold;
 }
