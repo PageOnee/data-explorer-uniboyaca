@@ -25,7 +25,7 @@ export const Toolbar = ({ onSelect, dropdownItems, isLapseActive }) => {
 
   return (
 
-    <div className="d-flex flex-row align-items-center justify-content-between py-3 toolbar">
+    <div className="d-flex flex-row align-items-center justify-content-between px-4 py-3 toolbar">
 
       {/* Menu desplegable - Nivel de estudios */}
       <p className="my-auto" > Nivel Academico: </p >
