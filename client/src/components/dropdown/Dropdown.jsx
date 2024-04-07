@@ -18,7 +18,7 @@ export const Dropdown = ({ selected, setSelected, onSelect, items }) => {
 
       {/* Predeterminado */}
       <div className="d-flex flex-row align-items-center justify-content-between p-2 dropdown__btn" onClick={(e) => setIsActive(!isActive)}>
-        Seleccione
+        {selected || "Seleccione"}
         <IoIosArrowDropdown />
       </div>
 
