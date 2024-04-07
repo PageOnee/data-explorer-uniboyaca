@@ -79,14 +79,11 @@ export const ReportSemester = () => {
             })
             .catch((error) => {
                 console.error("Error al obtener Informacion Personal:", error);
-            })
-            .finally(() => {
-                setLoading(false);
             });
     }, [levelSelected, lapseSelected, categorySelected]);
 
 
-    // Crea los Charts Boxes
+    // Crea los charts Boxes
     const chartBoxes = [];
 
     if (data) {
@@ -123,9 +120,6 @@ export const ReportSemester = () => {
 
             {/* Contenido principal */}
             <div className="col-12">
-
-                {/* SpinnerLoader mientras se cargan los datos */}
-
                 <div className="d-flex flex-column">
 
                     {/* Barra de herramientas */}
