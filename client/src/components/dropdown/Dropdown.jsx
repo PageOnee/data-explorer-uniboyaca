@@ -9,12 +9,12 @@ import "./Dropdown.css";
 
 
 // Componente : Elemento dropdown
-export const Dropdown = ({ selected, setSelected, onSelect, items }) => {
+export const Dropdown = ({ selected, setSelected, onSelect, items, disabled }) => {
 
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <div className="dropdown">
+    <div className={`dropdown ${disabled ? 'disabled' : ''}`}>
 
       {/* Predeterminado */}
       <div className="d-flex flex-row align-items-center justify-content-between p-2 dropdown__btn" onClick={(e) => setIsActive(!isActive)}>

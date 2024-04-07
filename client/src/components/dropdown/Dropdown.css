@@ -43,3 +43,12 @@
   transition: all 0.5s;
   font-weight: bold;
 }
+
+.dropdown.disabled {
+  opacity: 0.5;
+  /* Reducir la opacidad para indicar que está deshabilitado */
+  pointer-events: none;
+  /* Desactivar eventos de puntero para evitar clics */
+  cursor: not-allowed;
+  /* Cambiar el cursor para indicar que no se puede hacer clic */
+}
