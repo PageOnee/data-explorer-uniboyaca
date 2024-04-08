@@ -5,22 +5,34 @@ class Items:
     
     # Items categoria informacion personal
     informacion_personal =  [
-                        'Sede','ProgramaAcademico', 'DoblePrograma', 'SedeDoblePrograma','ProgramaDoblePrograma','Sexo','Edad','EstadoCivil','NumeroHijos','ConviveCon',
-                        'CantidadPersonasCargoEconomicamente','EstratoSocioEconomico'
-                        ]
+                        'ProgramaAcademico', 'Sede', 'DoblePrograma', 'SedeDoblePrograma','ProgramaDoblePrograma','Sexo','Edad','EstadoCivil','NumeroHijos','ConviveCon',
+                        'PersonasACargo','CantidadPersonasCargoEconomicamente','EstratoSocioEconomico']
         
-    # Items categoria percepcion
-    percepcion = [
-                'PercepcionEquiposMediosTecnlogicos', 'PercepcionCalidadDocentes', 'PercepcionPlanesEstudio','PercepcionServicioUsuario',
-                'PercepcionProcesosPedagogicos','PercepcionSistemaEvaluacion','PercepcionImagenGeneral','SatisfaccionChatLinea','SatisfaccionFormularioPaginaWeb',
-                'SatisfaccionWhatsapp','SatisfaccionMessenger','SatisfaccionCorreoElectronico','SatisfaccionPuntoAtenciónPresencial'
-                ]
-        
+    # Items categoria informacion familiar   
+    informacion_familiar = ["PadreVive", "MadreVive", "EstadoCivilPadres", "ConviveCon", "OcupacionPadre", "OcupacionMadre", "OcupacionConyuge", "OcupacionHermanoMayor",
+                            "OcupacionHermanoMenor", "NivelEducativoPadre", "NivelEducativoMadre", "NivelEducativoConyuge", "NivelEducativoHermanoMayor", "NivelEducativoHermanoMenor"]
+
+    # Items categoria estado socioeconomico
+    estado_socioeconomico = ["IngresosPadre", "IngresosMadre", "IngresosConyuge", "IngresosPropios", "IngresosComplementarios", "RazonIngresosComplementarios", "GastosEducativos"]
+
+    
     # Items categoria educacion previa
-    educacion_previa = ['JornadaBachillerato', 'ValidacionBachillerato', 'InstitucionBachilleratoBilingue','InconclusionEstudiosPrevios','NivelIdiomaIngles', 'NivelIdiomaFrances',
-                        'NivelIdiomaItaliano', 'NivelIdiomaAleman']
+    educacion_previa = ['EdadConclusionBachillerato','TipoColegio','TituloBachillerato','JornadaBachillerato', 'ValidacionBachillerato', 'InstitucionBachilleratoBilingue','TiempoTituloBachillerato',
+                        'InconclusionEstudiosPrevios','MotivoInconclusionEstudios','TiempoTranscurridoIngresoUniversidad','TituloPrevioUniversidad','TipoTituloPrevio','FactoresSeleccionCarrera',
+                        'NivelIdiomaIngles', 'NivelIdiomaFrances','NivelIdiomaItaliano', 'NivelIdiomaAleman']
     
+    # Items categoria contexto social y personal 
+    datos_etnicos = ["PerteneceGrupoEtnico", "GrupoEtnico", "ComunidadLGBTI", "Discapacidad", "TipoDiscapacidad", "VictimaConflictoArmado"]
+
+    # Items categoria estilo de vida y percepcion
+    datos_actividades = ["PracticaDeporte", "Deporte", "GrupoCultural", "GrupoCulturalNombre", "CantidadLectura", "FrecuenciaFumar", "FrecuenciaBebidasAlcoholicas", "FrecuenciaSustanciasPsicoactivas"]
     
+    # Items categoria percepcion
+    percepcion = ['PercepcionEquiposMediosTecnlogicos', 'PercepcionCalidadDocentes', 'PercepcionPlanesEstudio','PercepcionServicioUsuario',
+                'PercepcionProcesosPedagogicos','PercepcionSistemaEvaluacion','PercepcionImagenGeneral','SatisfaccionChatLinea','SatisfaccionFormularioPaginaWeb',
+                'SatisfaccionWhatsapp','SatisfaccionMessenger','SatisfaccionCorreoElectronico','SatisfaccionPuntoAtenciónPresencial']
+        
+   
     ## Items Posgrado
     
     # Items categoria informacion personal
