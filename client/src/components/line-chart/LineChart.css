@@ -1,0 +1,7 @@
+/* Cotenedor grafica */
+.chart-container {
+    width: 600px;
+    height: 370px;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
+}
