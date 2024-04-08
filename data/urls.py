@@ -1,8 +1,24 @@
+### Librerias de django
 from django.urls import path
-from .views import DataView
+
+### Vista
+from .views import AnalisysData
 
 
-### Todo : Urls de la app 'Data'
+## Paths rutas de la Api de analisis de datos
 urlpatterns = [
-    path('api/data/<str:level>/<str:interval>/<str:lapse>/<str:category>', DataView.as_view())
+    
+    # Ruta reporte por periodo
+    path('api/v1/data/report_period', AnalisysData.report_period),
+    
+    # Ruta reporte historico
+    path('api/v1/data/report_historical', AnalisysData.report_historical ),
+
+    # Ruta promedio de un dato
+    path('api/v1/data/average', AnalisysData.average_data),
+    
+    # Ruta moda de un dato
+    path('api/v1/data/mode', AnalisysData.mode_data)
+    
+    
 ]
