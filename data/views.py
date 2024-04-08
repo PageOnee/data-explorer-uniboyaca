@@ -1,16 +1,60 @@
-from rest_framework.views import APIView
+### Librerias de django
+from rest_framework.decorators import api_view
 from rest_framework.response import Response 
-from .analysis.analysis import Analysis
 from rest_framework import status
 
+### Clases
+from .analysis.analysis import Analysis
 
-### Todo : Vista para las operaciones de 'Data'
-class DataView(APIView):
-    
-    ## ? Funcion : Realiza el llamado de la clase que aloja el Analisis de Datos
-    def get(self, request, level=None, interval=None, lapse=None, category=None):
+
+## Vista para las operaciones de la Api 'Data'
+class AnalisysData:
+     
         
-        print('Cargando Datos ....')
-        data = Analysis().analysis_data(level, interval, lapse, category)
+    # Funcion : Reporte por periodo
+    @api_view(['GET'])
+    def report_period(request):
+        
+        # Obtener los parámetros de consulta
+        level = request.query_params.get('level')
+        interval = request.query_params.get('interval')
+        lapse = request.query_params.get('lapse')
+        category = request.query_params.get('category')
+        item = request.query_params.get('item')
+        item_data = request.query_params.get('item_data')
+        
+        if request.method == 'GET':
+        
+            data = Analysis().analysis_data(level, interval, lapse, category, item, item_data)
+            return Response(data, status=status.HTTP_200_OK)
+
+        
+    # Funcion : Reporte historico
+    @api_view(['GET'])
+    def report_historical(request):
+        
+        if request.method == 'GET':
             
-        return Response(data, status=status.HTTP_200_OK)
+            data = Analysis().report_historical()
+            return Response(data, status=status.HTTP_200_OK)
+    
+    
+    # Funcion : Promedio de un dato
+    @api_view(['GET'])
+    def average_data(request):
+        
+        if request.method == 'GET':
+            
+            data = "Promedio"
+            return Response(data, status=status.HTTP_200_OK)
+        
+    
+    # Funcion : Moda de un dato
+    @api_view(['GET'])
+    def mode_data(request):
+        
+        if request.method == 'GET':
+            
+            data = "Moda"
+            return Response(data, status=status.HTTP_200_OK)
+        
