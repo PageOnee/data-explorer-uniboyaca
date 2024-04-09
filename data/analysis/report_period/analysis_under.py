@@ -18,17 +18,14 @@ class AnalysisUnder:
          
         if (interval == 'Semestral'):
             
-            print('Analisis Semestral : ')
             data = self.analysis_data_semester(lapse, category, item, item_data)
         
         elif (interval == 'Anual'):
             
-            print('Analisis Anual : ')
             data = self.analysis_data_year(lapse, category, item, item_data)
         
         elif (interval == 'General'):
             
-            print('Analisis General : ')
             data = self.analysis_data_general(category, item, item_data)
         
         return data
@@ -52,17 +49,14 @@ class AnalysisUnder:
         load_df = LoadData()
         df = load_df.load_data_under(file_path)
         
-        # Validacion si se ha aplicado un filtro
+        # Validacion si se ha de aplicar el filtrado
         if (item == ''):
-            
-            df=df
-            
+            df = df
+                        
         else:
-            
-            # Filtra los el data frame
+            # Filtra los datos del data frame
             df = Methods.filter_data(df, item, item_data)
-            print('Filtrado el DataFrame')
-            
+           
         # Validacion de la categoria de los datos
         if(category == ''):
             
@@ -71,26 +65,41 @@ class AnalysisUnder:
         elif(category == 'Informacion Personal'):     
           
             data_dic = Methods.count_data(df, Items.informacion_personal)
-        
-        elif (category == 'Percepcion y Satisfaccion'):
             
-            data_dic = Methods.count_data(df, Items.percepcion)
+        elif (category == 'Informacion Familiar'):
+            
+            data_dic = Methods.count_data(df, Items.informacion_familiar)
+        
+        elif (category == 'Estado SocioEconomico'):
+            
+            data_dic = Methods.count_data(df, Items.estado_socioeconomico)
             
         elif (category == 'Educacion Previa'):
             
             data_dic = Methods.count_data(df, Items.educacion_previa)
+            
+        elif (category == 'Contexto Social y Personal'):
+            
+            data_dic = Methods.count_data(df, Items.datos_etnicos)
+            
+        elif (category == 'Estilo de Vida'):
+            
+            data_dic = Methods.count_data(df, Items.datos_actividades)
+        
+        elif (category == 'Percepcion y Satisfaccion'):
+            
+            data_dic = Methods.count_data(df, Items.percepcion)
         
         return data_dic
     
     
-    # ** Metodo : Reporte Anual
+    # Metodo : Reporte Anual
     def analysis_data_year(self, lapse, category, item, item_data):
         
         # Path de los archivos
         files_path = Paths.path_under()
         
-        # Directorio del script
-        # Obtener el directorio actual del script y retroceder dos niveles
+        # Obtener el directorio actual y retroceder dos niveles
         directory = os.path.dirname(os.path.abspath(__file__))
         parent_directory = os.path.dirname(directory)
         
@@ -113,6 +122,13 @@ class AnalysisUnder:
             dfs.append(df)
         
         concatenated_df = pd.concat(dfs, ignore_index=True)
+        
+        # Validacion si se ha de aplicar el filtrado
+        if (item == ''):
+            concatenated_df = concatenated_df;
+        
+        else:
+            concatenated_df = Methods.filter_data(concatenated_df, item, item_data)
 
         # Validacion de la categoria de los datos
         if(category == ''):
@@ -122,14 +138,30 @@ class AnalysisUnder:
         elif(category == 'Informacion Personal'):     
           
             data_dic = Methods.count_data(concatenated_df, Items.informacion_personal)
-        
-        elif (category == 'Percepcion y Satisfaccion'):
             
-            data_dic = Methods.count_data(concatenated_df, Items.percepcion)
+        elif (category == 'Informacion Familiar'):
+            
+            data_dic = Methods.count_data(concatenated_df, Items.informacion_familiar)
+        
+        elif (category == 'Estado SocioEconomico'):
+            
+            data_dic = Methods.count_data(concatenated_df, Items.estado_socioeconomico)
             
         elif (category == 'Educacion Previa'):
             
             data_dic = Methods.count_data(concatenated_df, Items.educacion_previa)
+            
+        elif (category == 'Contexto Social y Personal'):
+            
+            data_dic = Methods.count_data(concatenated_df, Items.datos_etnicos)
+            
+        elif (category == 'Estilo de Vida'):
+            
+            data_dic = Methods.count_data(concatenated_df, Items.datos_actividades)
+        
+        elif (category == 'Percepcion y Satisfaccion'):
+            
+            data_dic = Methods.count_data(concatenated_df, Items.percepcion)
         
         return data_dic
     
@@ -162,9 +194,16 @@ class AnalysisUnder:
             dfs.append(df)
 
         concatenated_df = pd.concat(dfs, ignore_index=True)
-  
-        # Validacion de la categoria de los datos
-            
+        
+        # Validacion si se ha de aplicar el filtrado
+        if (item == ''):
+            concatenated_df = concatenated_df
+        
+        else:
+            concatenated_df = Methods.filter_data(concatenated_df, item, item_data)    
+
+        # ! Validacion Categoria Datos
+        
         data_dict = Methods.count_data(concatenated_df)
             
         return data_dict

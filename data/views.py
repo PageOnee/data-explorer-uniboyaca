@@ -11,7 +11,7 @@ from .analysis.analysis import Analysis
 class AnalisysData:
      
         
-    # Funcion : Reporte por periodo
+    # Metodo : Reporte por periodo
     @api_view(['GET'])
     def report_period(request):
         
@@ -29,7 +29,7 @@ class AnalisysData:
             return Response(data, status=status.HTTP_200_OK)
 
         
-    # Funcion : Reporte historico
+    # Metodo : Reporte historico
     @api_view(['GET'])
     def report_historical(request):
         
@@ -39,7 +39,7 @@ class AnalisysData:
             return Response(data, status=status.HTTP_200_OK)
     
     
-    # Funcion : Promedio de un dato
+    # Metodo : Promedio de un dato
     @api_view(['GET'])
     def average_data(request):
         
@@ -49,12 +49,24 @@ class AnalisysData:
             return Response(data, status=status.HTTP_200_OK)
         
     
-    # Funcion : Moda de un dato
+    # Metodo : Moda de un dato
     @api_view(['GET'])
     def mode_data(request):
         
         if request.method == 'GET':
             
             data = "Moda"
+            return Response(data, status=status.HTTP_200_OK)
+        
+
+    # Metodo : Items de datos - Opciones Filtro
+    @api_view(['GET'])
+    def mode_data(request):
+        
+        item = request.query_params.get('item')
+         
+        if request.method == 'GET':
+            
+            data = Analysis().items_filter(item)
             return Response(data, status=status.HTTP_200_OK)
         
