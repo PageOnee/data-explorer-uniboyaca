@@ -34,15 +34,39 @@ class Items:
     ## Items Posgrado
     
     # Items categoria informacion personal
-    informacion_personal_post = ['ProgramaAcademico', 'AlternativaDeGrado', 'Sede','Genero','Edad','EstadoCivil', 'CantidadHijos']
+    informacion_personal_post = ["Nombre","ProgramaAcademico","AlternativaDeGrado","Sede","Semestre","Genero", "Edad","EstadoCivil","CantidadHijos","ConviveCon"]
     
-        
+    #Items Informacion familiar
+    informacion_familiar_post = [ "OcupacionConyuge", "OcupacionPadre", "OcupacionMadre", "OcupacionHermanoMayor","OcupacionHermanoMenor","NivelEducativoConyuge","NivelEducativoPadre",
+    "NivelEducativoMadre","NivelEducativoHermanoMayor","NivelEducativoHermanoMenor","PersonasACargo","CantidadPersonasACargo"]
+    
+    estado_socioeconomico_post = ["SituacionLaboral","SectorEconomicoLaboral","NombreEmpresa","EstratoSocioeconomico","NivelIngresosPropios","NivelIngresosConyuge","NivelIngresosPadre","NivelIngresosMadre"]
+
+    # Items educacion previa post
+    educacion_previa_post = ["UbicacionUniversidadPregrado","UniversidadPregrado","EdadCulminacionPregrado","TiempoPregrado","TiempoIngresoPostgrado","JustificacionTiempoIngresoPost",
+    "NivelManejoIngles","SostenimientoEconomicoPregrado","TituloPostgradoPrevio","TipoTituloPostgradoPrevio","FactoresSeleccionPostgrado","EstudiosInconclusosOtraInstitucion",
+    ]
+    
+    # Items datos etnicos 
+    datos_etnicos_post = ["PertenenciaGrupoIndigena","NombreGrupoIndigena","PertenenciaGrupoLGTBI","TipoDiscapacidad","TipoDiscapacidadPresente","VictimaConflictoArmado"]
+    
     # Items categoria percepcion
-    percepcion_post = ['PercepcionEquiposTecnlogicos','PercepcionInstalaciones', 'PercepcionCalidadDocentes', 'PercepcionPlanesEstudio','PercepcionServicioAlUsuario',
-                           'PercepcionProcesosPedagogicos','PercepcionGeneralUniversidad']
+    percepcion_post = ["ServiciosBienestarPostgrado","ServiciosAdicionalesPostgrado","DescrubrimientoUniversidad","EleccionUniversidad","CalificacionPublicidadUniversidad",
+    "PercepcionEquiposTecnologicos","PercepcionInstalaciones","PercepcionCalidadDocentes","PercepcionPlanesDeEstudio","PercepcionServicioAlUsuario","PercepcionProcesoPedagogico",
+    "PercepcionSistemaEvaluacionEstudiantil","PercepcionGeneralUniversidad","UniversidadConMejorInfraestructura","UniversidadConPeorInfraestructura","UniversidadConCalidadAcademicaAlta","UniversidadConCalidadAcademicaBaja",
+    "UniversidadConPrecioMatriculaAlto","UniversidadConPrecioMatriculaBajo","UniversidadConMayorReconocimientoSociedad","UniversidadConMenorReconocimientoSociedad",
+    "UniversidadConImagenPositiva","UniversidadConImagenNegativa","RecomendacionUniversidad","JustificacionRecomendacion","Comentarios"]
     
     
     ### Items Historico
     
     # Items Predeterminados
-    historico_prueba = ['Sede','Sexo','EstadoCivil','PercepcionCalidadDocentes',]
+    historico_prueba = ['ProgramaAcademico', 'Sede', 'DoblePrograma', 'SedeDoblePrograma','ProgramaDoblePrograma','Sexo','Edad','EstadoCivil','NumeroHijos','ConviveCon',
+                        'PersonasACargo','EstratoSocioEconomico',"NivelEducativoPadre", "NivelEducativoMadre", "NivelEducativoConyuge",
+                        "NivelEducativoHermanoMayor", "NivelEducativoHermanoMenor","PerteneceGrupoEtnico", "GrupoEtnico", "ComunidadLGBTI", "Discapacidad", "TipoDiscapacidad", 
+                        "VictimaConflictoArmado",'PercepcionEquiposMediosTecnlogicos', 'PercepcionCalidadDocentes', 'PercepcionPlanesEstudio','PercepcionServicioUsuario',
+                'EdadConclusionBachillerato','TipoColegio','TituloBachillerato','JornadaBachillerato', 'ValidacionBachillerato', 'InstitucionBachilleratoBilingue','TiempoTituloBachillerato',
+                        'InconclusionEstudiosPrevios','MotivoInconclusionEstudios','TiempoTranscurridoIngresoUniversidad','TituloPrevioUniversidad','TipoTituloPrevio','FactoresSeleccionCarrera',
+                        'NivelIdiomaIngles', 'NivelIdiomaFrances','NivelIdiomaItaliano', 'NivelIdiomaAleman',
+                        'PercepcionProcesosPedagogicos','PercepcionSistemaEvaluacion','PercepcionImagenGeneral','SatisfaccionChatLinea','SatisfaccionFormularioPaginaWeb',
+                'SatisfaccionWhatsapp','SatisfaccionMessenger','SatisfaccionCorreoElectronico','SatisfaccionPuntoAtenciónPresencial']

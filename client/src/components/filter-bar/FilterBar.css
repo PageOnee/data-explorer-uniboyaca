@@ -1,0 +1,17 @@
+.filter-bar {
+    border-bottom: 1px solid #E1E1E1;
+}
+
+.filter-bar p {
+    font-weight: bold;
+}
+
+.btn-filter {
+    background: #ff0303;
+    border: none;
+    padding: 10px 10px;
+    margin: 0px 30px;
+    border-radius: 14px;
+    font-weight: bold;
+    color: #fff;
+}

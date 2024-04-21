@@ -6,9 +6,10 @@ import { useNavigate } from 'react-router-dom'
 import { Header } from "../../../../components/header/Header";
 import { Toolbar } from "../../../../components/toolbar/Toolbar";
 import { ChartBox } from "../../../../components/chart-box/ChartBox";
+import { FilterBar } from "../../../../components/filter-bar/FilterBar";
 
 /// Servicios
-import { getInfoAnnual } from "../../../../services/data.api";
+import { getItems, getInfoAnnual } from "../../../../services/data.api";
 
 /// Contextos 
 import {
@@ -16,7 +17,11 @@ import {
     periodItems,
     annualLapseItems,
     categoryItems,
+    dataItems
 } from "../../../../util/itemsToolbar";
+
+/// Utils
+import { TextFormatter } from './../../../../util/formatText';
 
 /// Estilos
 import "./ReportAnnual.css"
@@ -29,7 +34,7 @@ export const ReportAnnual = () => {
     const navigate = useNavigate();
 
     // Datos
-    const [data, setdata] = useState(null);
+    const [data, setData] = useState(null);
 
     // Nivel Estudios - Dropdown - Predeterminado : Pregrado
     const [levelSelected, setLevelSelected] = useState("Pregrado");
@@ -41,18 +46,47 @@ export const ReportAnnual = () => {
     const [lapseSelected, setLapseSelected] = useState("2023");
 
     // Categoria - Dropdown
-    const [categorySelected, setcategorySelected] = useState("");
+    const [categorySelected, setCategorySelected] = useState("");
+
+    // Filtro datos - Columna df
+    const [itemsSelected, setItemsSelected] = useState("");
+
+    // Itenms del filtro columna df
+    const [dataItemsSelected, setDataItemsSelected] = useState([]);
+
+    // Filtro de datos - Items
+    const [dataSelected, setDataSelected] = useState("");
 
 
     // Metodo : Validar items seleccionados en el toolbar
     const handleDropdownSelection = (selectedOption, dropdownType) => {
 
+        // Seleccion categoria
         if (dropdownType === "category") {
-            setcategorySelected(selectedOption);
+            setCategorySelected(selectedOption);
 
+            // Seleccion del ciclo
         } else if (dropdownType === "lapse") {
             setLapseSelected(selectedOption);
 
+            // Seleccion del filtro columna
+        } else if (dropdownType === "dataColumn") {
+            setItemsSelected(selectedOption);
+
+            // Servicio traer los items de la columna seleccionada
+            getItems(TextFormatter.deleteSpaces(selectedOption))
+                .then(response => {
+                    setDataItemsSelected(response.data);
+                })
+                .catch(error => {
+                    console.error("Error al obtener los datos del ítem:", error);
+                });
+
+            // Seleccion de filtro columna
+        } if (dropdownType === "dataItem") {
+            setDataSelected(selectedOption);
+
+            // Seleccion Periodo
         } else if (dropdownType === "period") {
             setPeriodSelected(selectedOption);
 
@@ -61,25 +95,31 @@ export const ReportAnnual = () => {
 
             } else if (selectedOption === "General") {
                 navigate("/reporte-periodo/reporte-general");
+
             }
 
+            // Selecccion del nivel academico
         } else if (dropdownType === "level") {
             setLevelSelected(selectedOption);
-        }
 
+            if (selectedOption === "Posgrado") {
+                navigate("/reporte-periodo/reporte-posgrado");
+            }
+        }
     };
 
 
     // Ejecutar el servicio
     useEffect(() => {
-        getInfoAnnual(levelSelected, lapseSelected, categorySelected)
+        getInfoAnnual(levelSelected, lapseSelected, categorySelected, TextFormatter.deleteSpaces(itemsSelected), dataSelected)
             .then((response) => {
-                setdata(response.data);
+                setData(response.data);
             })
             .catch((error) => {
                 console.error("Error al obtener Informacion Personal:", error);
             });
-    }, [levelSelected, lapseSelected, categorySelected]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [levelSelected, lapseSelected, categorySelected, dataSelected]);
 
 
     // Crea los charts boxes
@@ -127,7 +167,19 @@ export const ReportAnnual = () => {
                         periodItems: periodItems,
                         lapseItems: annualLapseItems,
                         categoryItems: categoryItems
-                    }} isLapseActive={true} />
+                    }}
+                        initialLevelSelected={levelSelected}
+                        initialPeriodSelected={periodSelected}
+                        initialLapseSelected={lapseSelected}
+                        isLapseActive={true} />
+
+
+                    {/* Barra de Filtros */}
+                    <FilterBar onSelect={handleDropdownSelection} dropdownItems={{
+                        dataColumnItems: dataItems,
+                        dataItems: dataItemsSelected.map(item => ({ name: item })),
+                    }} />
+
 
                     {/* Grafico */}
                     <div className="d-flex flex-row flex-wrap justify-content-between">{chartBoxes}</div>
@@ -137,3 +189,4 @@ export const ReportAnnual = () => {
         </div>
     );
 };
+

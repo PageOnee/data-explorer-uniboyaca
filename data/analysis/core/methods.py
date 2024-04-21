@@ -11,7 +11,7 @@ class Methods:
     def count_data(df, columns=None):
         data_dict = {}
         
-        # Validacion no se especifica categoria
+        # Validación si no se especifican columnas, se toman todas las columnas del DataFrame
         if columns is None:
             columns = df.columns
         
@@ -19,19 +19,37 @@ class Methods:
         exclude_columns = ['LugarDeNacimiento', 'CiudadNacimiento', 'LugarResidencia', 'CiudadResidencia']
         
         for column in columns:
-            # Validacion columna no existente en el df
-            try:
-                # Excluir las columnas especificadas
-                if column in exclude_columns:
-                    continue
-                    
-                df_data = df[column].value_counts().to_dict()
-                data_dict[column] = df_data
+            # Validar si la columna no está en el DataFrame
+            if column not in df.columns:
+                print(f"Column '{column}' not found in DataFrame.")
+                continue
             
-            except KeyError:
-                pass
+            # Validar si la columna está en la lista de columnas a excluir
+            if column in exclude_columns:
+                continue
+            
+            column_data = df[column]
+            
+            # Verificar si los valores en la columna están separados por comas
+            if any("," in str(value) for value in column_data):
+                combined_values = ",".join(column_data.astype(str))  # Combinar todos los valores de la columna en una cadena
+                individual_values = [value.strip() for value in combined_values.split(",")]  # Separar los valores individualmente
+                
+                option_counts = {}
+                for value in individual_values:
+                    if value in option_counts:
+                        option_counts[value] += 1
+                    else:
+                        option_counts[value] = 1
+                
+                data_dict[column] = option_counts
+            else:
+                # Si los valores no están separados por comas, contar las ocurrencias de valores únicos
+                value_counts = column_data.value_counts().to_dict()
+                data_dict[column] = value_counts
         
         return data_dict
+
 
 
     # Metodo Filtrar el data frame a los datos especificados    
@@ -78,22 +96,67 @@ class Methods:
         return mode[0] if not mode.empty else None
     
     
-    # Metodo : Conteo historico
     @staticmethod
     def count_data_historic(df, columns_to_count):
+        def unify_estrato_data(data):
+            unified_data = {
+                "1": data.get("1 (bajo - bajo)", 0) + data.get("1", 0),
+                "2": data.get("2 (bajo)", 0) + data.get("2", 0),
+                "3": data.get("3 (medio - bajo)", 0) + data.get("3", 0),
+                "4": data.get("4 (medio)", 0) + data.get("4", 0),
+                "5": data.get("5 (medio - alto)", 0) + data.get("5", 0),
+                "no sabe / no responde": data.get("no sabe / no responde", 0) + data.get("no informa", 0),
+                "6": data.get("6", 0),
+                "7 o mas": data.get("7 o mas", 0)
+            }
+            return unified_data
+        
+        # def unify_cantidad_personas(data):
+        #     unified_data = {
+        #         "1": data.get("1", 0) + data.get("1.0", 0),
+        #         "2": data.get("2", 0) + data.get("2.0", 0),
+        #         "3": data.get("3", 0) + data.get("3.0", 0),
+        #         "ninguna": data.get("ninguna", 0)
+        #     }
+        #     return unified_data
         
         results = {}
         
         for column_name in columns_to_count:
-            
             if column_name in df.columns:
                 column_data = df[column_name]
-                value_counts = column_data.value_counts().to_dict()
-                results[column_name] = value_counts
+                
+                # Verificar si los valores en la columna están separados por comas
+                if any("," in str(value) for value in column_data):
+                    combined_values = ",".join(column_data.astype(str))  # Combinar todos los valores de la columna en una cadena
+                    individual_values = [value.strip() for value in combined_values.split(",")]  # Separar los valores individualmente
+                    
+                    option_counts = {}
+                    for value in individual_values:
+                        if value in option_counts:
+                            option_counts[value] += 1
+                        else:
+                            option_counts[value] = 1
+                    
+                    results[column_name] = option_counts
+                else:
+                    # Si los valores no están separados por comas, contar las ocurrencias de valores únicos
+                    value_counts = column_data.value_counts().to_dict()
+                    results[column_name] = value_counts
             else:
                 print(f"Column '{column_name}' not found in DataFrame.")
         
+        # Llamar a la función para unificar los datos de estrato socioeconómico
+        if "EstratoSocioEconomico" in results:
+            unified_estrato_data = unify_estrato_data(results["EstratoSocioEconomico"])
+            results["EstratoSocioEconomico"] = unified_estrato_data
+            
+        # if "CantidadPersonasCargoEconomicamente" in results:
+        #     unified_cantidad_personas = unify_cantidad_personas(results["CantidadPersonasCargoEconomicamente"])
+        #     results["CantidadPersonasCargoEconomicamente"] = unified_cantidad_personas
+        
         return results
+
     
     
     # Metodo : Buscar items - Opciones de filtro
@@ -107,3 +170,5 @@ class Methods:
         options = df[item].unique().tolist()
         
         return options
+    
+    

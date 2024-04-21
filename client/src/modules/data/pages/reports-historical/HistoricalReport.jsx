@@ -12,7 +12,7 @@ export const HistoricalReport = () => {
             <div className='row'>
 
                 {/* Menu lateral */}
-                <div className="col-2">
+                <div className="col-2 p-0">
                     <SideMenu />
                 </div>
 

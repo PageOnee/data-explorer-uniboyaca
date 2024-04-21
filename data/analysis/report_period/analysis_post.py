@@ -13,12 +13,12 @@ class AnalysisPost:
      
         
     ##  Valida el tipo de Analisis que se va a aplicar 
-    def analysis_data_post(self, interval, lapse, category):
+    def analysis_data_post(self, interval, lapse, category, item, item_data):
         
         if (interval == 'Semestral'):
             
             print('Analisis Semestral : ')
-            data = self.analysis_data_semester(lapse, category)
+            data = self.analysis_data_semester(lapse, category, item, item_data)
         
         elif (interval == 'Anual'):
             
@@ -34,16 +34,17 @@ class AnalysisPost:
     
     
     # Metodo : Reporte Semestral
-    def analysis_data_semester(self, lapse, category):
+    def analysis_data_semester(self, lapse, category, item, item_data):
         
+        print(lapse)
         #  Path
         files_path = Paths.path_post()
         path = files_path.get(lapse)
         
-         # Obtener el directorio actual del script y retroceder dos niveles
+        # Obtener el directorio actual del script y retroceder dos niveles
         directory = os.path.dirname(os.path.abspath(__file__))
         parent_directory = os.path.dirname(directory)
-        print('Path',path)
+        
         # Construir la ruta al archivo
         file_path = os.path.join(parent_directory, path)
         
@@ -51,17 +52,38 @@ class AnalysisPost:
         load_df = LoadData()
         df = load_df.load_data_post(file_path)
         
+        # Validacion si se ha de aplicar el filtrado
+        if (item == ''):
+            df = df
+                        
+        else:
+            # Filtra los datos del data frame
+            df = Methods.filter_data(df, item, item_data)
+        
         if(category == ''):
             data_dic = Methods.count_data(df)
 
         if(category == 'Informacion Personal'):     
             
-            print('Conteo Informacion Personal')
             data_dic = Methods.count_data(df, Items.informacion_personal_post)
+        
+        elif (category == 'Informacion Familiar'):
+            
+            data_dic = Methods.count_data(df, Items.informacion_familiar_post)
+            
+        elif (category == 'Estado SocioEconomico'):
+            
+            data_dic = Methods.count_data(df, Items.estado_socioeconomico_post)
+            
+        elif (category == 'Educacion Previa'):
+            
+            data_dic = Methods.count_data(df, Items.educacion_previa_post)
+        elif (category == 'Contexto Social y Personal'):
+            
+            data_dic = Methods.count_data(df, Items.datos_etnicos_post)
         
         elif (category == 'Percepcion y Satisfaccion'):
             
-            print('Conteo Percepcion y Satisfaccion')
             data_dic = Methods.count_data(df, Items.percepcion_post)
             
         return data_dic
@@ -73,13 +95,11 @@ class AnalysisPost:
         # Path de los archivos
         files_path = Paths.path_post()
         
-        #  Obtener el directorio actual del script
-        # Obtener el directorio actual del script y retroceder 1 nivel
+        # Obtener el directorio actual y retroceder un nivel
         directory = os.path.dirname(os.path.abspath(__file__))
         parent_directory = os.path.dirname(directory)
         
-        
-        #  Obtener la lista de archivos que coinciden con el año proporcionado en lapse
+        # Lista de archivos que coinciden con el lapso de tiempo
         matching_files = [filename for year, filename in files_path.items() if str(lapse) in year]
 
         # Verificar si hay archivos correspondientes al año proporcionado
@@ -121,7 +141,7 @@ class AnalysisPost:
         # Path de los archivos
         files_path = Paths.path_post()
         
-        # Obtener el directorio actual del script y retroceder 1 nivel
+        # Obtener el directorio actual del script y retroceder un nivel
         directory = os.path.dirname(os.path.abspath(__file__))
         parent_directory = os.path.dirname(directory)
 

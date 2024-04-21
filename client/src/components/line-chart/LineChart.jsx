@@ -93,8 +93,23 @@ export const LineChart = ({ data }) => {
             datasets: itemsValues.map((item, index) => ({
                 label: TextFormatter.capitalizeFirstLetterOfEachWord(item),
                 data: nestedValues.map(values => values[index] || 0),
-                borderColor: colors[index], // Usar color correspondiente
-                backgroundColor: colors[index], // Usar color correspondiente para el fondo
+                // borderColor: colors[index], 
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ], // Usar color correspondiente
+                backgroundColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ], // Usar color correspondiente para el fondo
                 min: minNumber,
                 max: maxNumber,
             }))
@@ -152,7 +167,7 @@ export const LineChart = ({ data }) => {
                         <h3> {chartData.categoryTitle}  </h3>
                     </div>
 
-                    <div className='col-12'>
+                    <div className='col-12 line-grapric'>
                         <Line data={chartData.chartData} options={chartData.chartOptions} />
                     </div>
 

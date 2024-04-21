@@ -30,7 +30,7 @@ export const ReportHistorical = () => {
 
             {/* Cabecera */}
             <div className="col-12">
-                <Header titleModule={`Reporte Historico`} titleSection={'2022-2 - 2023-1'} />
+                <Header titleModule={`Reporte Historico`} titleSection={'2020-2 - 2023-1'} />
             </div>
 
             {/* Contenido */}

@@ -19,7 +19,7 @@ class Analysis:
         elif(level == 'Posgrado'):
             
             print('Analisis - Datos - Posgrado')
-            data = AnalysisPost().analysis_data_post(interval, lapse, category)
+            data = AnalysisPost().analysis_data_post(interval, lapse, category, item, item_data)
             
         return data
     

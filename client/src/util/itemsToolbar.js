@@ -42,6 +42,26 @@ export const semesterLapseItems = [
   },
 ];
 
+export const semesterLapseItemsPost = [
+  {
+    name: "2020-2",
+  },
+  {
+    name: "2021-1",
+  },
+  {
+    name: "2021-2",
+  },
+  {
+    name: "2022-1",
+  },
+  {
+    name: "2022-2",
+  },
+  {
+    name: "2023-1",
+  },
+];
 
 export const annualLapseItems = [
   {
@@ -56,6 +76,15 @@ export const annualLapseItems = [
   {
     name: "2023",
   },
+];
+
+export const annualLapseItemsPost = [
+  {
+    name: "2020",
+  },
+  {
+    name: "2021",
+  }
 ];
 
 
@@ -81,4 +110,19 @@ export const categoryItems = [
   {
     name: "Percepcion y Satisfaccion",
   }
+]
+
+export const dataItems = [
+  {
+    name: "Sede",
+  },
+  {
+    name: "Programa Academico"
+  },
+  {
+    name: "Sexo"
+  },
+  {
+    name: "Estrato SocioEconomico",
+  },
 ];

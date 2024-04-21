@@ -20,7 +20,7 @@ class LoadData:
             for column in df.columns:
                 df[column] = df[column].apply(lambda x:x.lower() if isinstance(x, str) else x)  
             
-            # Normalizar el texto - Omitir acentos
+            # Normalizar el texto - Omitir acentos / Caracteres especiales
             for column in df.columns:
                 df[column] = df[column].apply(lambda x: unidecode.unidecode(x) if isinstance(x, str) else x)
 
@@ -29,7 +29,9 @@ class LoadData:
                 df[column] = df[column].apply(lambda x: ' '.join(x.split()) if isinstance(x, str) else x)
 
             # Columnas excedentes
-            columns_delete = ['MarcaTemporal','NombreCompleto','Codigo','CorreoElectronico','Sugerencias','JustificacionRecomendacion','JustificacionPercepcion','NombreMedioComunicacion','FactoresTiempoTranscurrido']
+            columns_delete = ['MarcaTemporal','NombreCompleto','Codigo','CorreoElectronico','Sugerencias','JustificacionRecomendacion',
+                              'JustificacionPercepcion','NombreMedioComunicacion',
+                              'FactoresTiempoTranscurrido']
             
             # Elimina las columnas excedentes si estan presentes
             for col in columns_delete:

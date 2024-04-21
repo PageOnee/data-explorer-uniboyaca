@@ -6,9 +6,11 @@ import { useNavigate } from 'react-router-dom'
 import { Header } from "../../../../components/header/Header";
 import { Toolbar } from "../../../../components/toolbar/Toolbar";
 import { ChartBox } from "../../../../components/chart-box/ChartBox";
+import { FilterBar } from "../../../../components/filter-bar/FilterBar";
 
 /// Servicios
-import { getInfo } from "../../../../services/data.api";
+import { getItems, getInfo } from "../../../../services/data.api";
+import { TextFormatter } from './../../../../util/formatText';
 
 /// Contextos 
 import {
@@ -16,6 +18,7 @@ import {
     periodItems,
     annualLapseItems,
     categoryItems,
+    dataItems
 } from "../../../../util/itemsToolbar";
 
 
@@ -39,6 +42,14 @@ export const ReportGeneral = () => {
     // Categoria - Dropdown
     const [categorySelected, setcategorySelected] = useState("");
 
+    // Filtro datos - Columna df
+    const [itemsSelected, setItemsSelected] = useState("");
+
+    // Itenms del filtro columna df
+    const [dataItemsSelected, setDataItemsSelected] = useState([]);
+
+    // Filtro de datos - Items
+    const [dataSelected, setDataSelected] = useState("");
 
     // Metodo : Validar items seleccionados en el toolbar
     const handleDropdownSelection = (selectedOption, dropdownType) => {
@@ -58,20 +69,37 @@ export const ReportGeneral = () => {
 
         } else if (dropdownType === "level") {
             setLevelSelected(selectedOption);
+        } else if (dropdownType === "dataColumn") {
+            setItemsSelected(selectedOption);
+
+            // Servicio traer los items de la columna seleccionada
+            getItems(TextFormatter.deleteSpaces(selectedOption))
+                .then(response => {
+                    setDataItemsSelected(response.data);
+                })
+                .catch(error => {
+                    console.error("Error al obtener los datos del ítem:", error);
+                });
+
+        } if (dropdownType === "dataItem") {
+            setDataSelected(selectedOption);
+
+            // Seleccion Periodo
         }
     };
 
 
     // Ejcutar el servicio
     useEffect(() => {
-        getInfo(levelSelected, lapseSelected, categorySelected)
+        getInfo(levelSelected, lapseSelected, categorySelected, TextFormatter.deleteSpaces(itemsSelected), dataSelected)
             .then((response) => {
                 setData(response.data);
             })
             .catch((error) => {
                 console.error("Error al obtener Informacion Personal:", error);
             });
-    }, [levelSelected, lapseSelected, categorySelected]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [levelSelected, lapseSelected, categorySelected, dataSelected]);
 
 
     // Crea los charts boxes
@@ -119,8 +147,17 @@ export const ReportGeneral = () => {
                         lapseItems: annualLapseItems,
                         categoryItems: categoryItems,
                     }}
+                        initialLevelSelected={levelSelected}
+                        initialPeriodSelected={periodSelected}
+                        initialLapseSelected={lapseSelected}
                         isLapseActive={false}
                     />
+
+                    {/* Barra de Filtros */}
+                    <FilterBar onSelect={handleDropdownSelection} dropdownItems={{
+                        dataColumnItems: dataItems,
+                        dataItems: dataItemsSelected.map(item => ({ name: item })),
+                    }} />
 
                     <div className="d-flex flex-row flex-wrap justify-content-between">{chartBoxes}</div>
                 </div>

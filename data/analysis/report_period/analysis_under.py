@@ -203,8 +203,38 @@ class AnalysisUnder:
             concatenated_df = Methods.filter_data(concatenated_df, item, item_data)    
 
         # ! Validacion Categoria Datos
-        
-        data_dict = Methods.count_data(concatenated_df)
+        if(category == ''):
             
-        return data_dict
+            data_dic = Methods.count_data(concatenated_df)
+            
+        elif(category == 'Informacion Personal'):     
+          
+            data_dic = Methods.count_data(concatenated_df, Items.informacion_personal)
+            
+        elif (category == 'Informacion Familiar'):
+            
+            data_dic = Methods.count_data(concatenated_df, Items.informacion_familiar)
+        
+        elif (category == 'Estado SocioEconomico'):
+            
+            data_dic = Methods.count_data(concatenated_df, Items.estado_socioeconomico)
+            
+        elif (category == 'Educacion Previa'):
+            
+            data_dic = Methods.count_data(concatenated_df, Items.educacion_previa)
+            
+        elif (category == 'Contexto Social y Personal'):
+            
+            data_dic = Methods.count_data(concatenated_df, Items.datos_etnicos)
+            
+        elif (category == 'Estilo de Vida'):
+            
+            data_dic = Methods.count_data(concatenated_df, Items.datos_actividades)
+        
+        elif (category == 'Percepcion y Satisfaccion'):
+            
+            data_dic = Methods.count_data(concatenated_df, Items.percepcion)
+        
+        return data_dic
+       
     

@@ -6,6 +6,7 @@ import { SideMenu } from "../../../../components/sidemenu/SideMenu";
 import { ReportSemester } from "./../../components/report-semester/ReportSemester";
 import { ReportAnnual } from "./../../components/report-annual/ReportAnnual";
 import { ReportGeneral } from "./../../components/report-general/ReportGeneral";
+import { ReportPostgraduate } from "./../../components/report-postgraduate/ReportPostgraduate";
 
 /// Estilos
 import "./PeriodReport.css";
@@ -37,6 +38,8 @@ export const PeriodReport = () => {
             <Route path="reporte-semestre" element={<ReportSemester />} />
             <Route path="reporte-anual" element={<ReportAnnual />} />
             <Route path="reporte-general" element={<ReportGeneral />} />
+            <Route path="reporte-posgrado" element={<ReportPostgraduate />} />
+
           </Routes>
 
         </div>

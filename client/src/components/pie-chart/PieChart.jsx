@@ -17,11 +17,21 @@ export const PieChart = (props) => {
 
     const { dataKey, chartData } = props;
 
+    let totalValues = chartData.reduce((total, item) => total + item[dataKey], 0);
+
 
     // Personalizar estilos del tooltip
     const tooltipCallback = (tooltipItem) => {
-        return `${tooltipItem.label} : ${tooltipItem.formattedValue}`;
+
+        const dataIndex = tooltipItem.dataIndex;
+
+        return `${tooltipItem.label}: ${tooltipItem.formattedValue} - ${((tooltipItem.formattedValue / totalValues) * 100).toFixed(2)}% `;
+
     };
+
+    const tootipFooter = (tooltipItem) => {
+        return `Porcentaje ${((tooltipItem.formattedValue / totalValues) * 100).toFixed(2)} % `
+    }
 
 
     // Datos del grafico
@@ -67,6 +77,7 @@ export const PieChart = (props) => {
                 callbacks: {
                     label: tooltipCallback,
                 }
+
             }
         }
     };
