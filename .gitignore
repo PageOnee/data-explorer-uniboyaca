@@ -1,9 +1,6 @@
 # ** Entorno Virual :
 venv
 
-# ** Bd :
-db.sqlite3
-
 # ** Archivos Cache :
 __pycache__
 
