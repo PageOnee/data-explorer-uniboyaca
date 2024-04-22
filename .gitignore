@@ -11,6 +11,5 @@ users/migrations
 data/migrations
 
 # ** Archivos de Datos 
-data/analysis/resources
 
 .vscodej
