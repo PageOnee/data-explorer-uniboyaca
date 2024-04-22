@@ -1,0 +1,12 @@
+/* Cotenedor grafica */
+.chart-container {
+    width: 740px;
+    height: 450px;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
+}
+
+.line-grapric {
+    width: 700px;
+    height: 370px;
+}

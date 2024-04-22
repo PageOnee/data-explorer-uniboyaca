@@ -1,0 +1,54 @@
+/* Elemento dropdown */
+.dropdown {
+  width: 250px;
+  height: 40px;
+  user-select: none;
+}
+
+/* Item predeterminado dropdown */
+.dropdown__btn {
+  cursor: pointer;
+  background: transparent;
+  border-radius: 10px;
+  border: 1px solid #e1e1e1;
+}
+
+/* Items dropdown */
+.dropdown__content {
+  background: #ffffff;
+  box-shadow: 3px 3px 10px 6px rgb(0, 0, 0, 0.06);
+  border-radius: 10px;
+  color: #1a120b;
+  font-weight: 500;
+}
+
+/* Item */
+.content__item {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e1e1e1;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0, 2s;
+}
+
+/* Hover al dropdown */
+.dropdown__btn:hover {
+  background: #cfd2cf;
+  font-weight: bold;
+}
+
+/* Hover al item de dropdown */
+.content__item:hover {
+  background: #cfd2cf;
+  transition: all 0.5s;
+  font-weight: bold;
+}
+
+.dropdown.disabled {
+  opacity: 0.5;
+  /* Reducir la opacidad para indicar que está deshabilitado */
+  pointer-events: none;
+  /* Desactivar eventos de puntero para evitar clics */
+  cursor: not-allowed;
+  /* Cambiar el cursor para indicar que no se puede hacer clic */
+}

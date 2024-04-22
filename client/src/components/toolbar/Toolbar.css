@@ -1,0 +1,8 @@
+.toolbar {
+    border-bottom: 1px solid #E1E1E1;
+    z-index: 2;
+}
+
+.toolbar p {
+    font-weight: bold;
+}

@@ -1,0 +1,40 @@
+.header {
+  height: 75px;
+  border-bottom: 1px solid #E1E1E1;
+}
+
+.header__title-header h2 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.header__user-container {
+  position: relative;
+  align-items: center;
+  padding: 0 20px;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.header__user-container:hover {
+  background: #AFAFAF;
+  border-radius: 12px;
+  padding: 10px 20px;
+}
+
+.header__user-container img {
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.header__user-container p {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.text-red {
+  color: #ff0303;
+  font-weight: bold;
+}
