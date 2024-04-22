@@ -1,6 +1,8 @@
 # ** Entorno Virual :
 venv
+.vscode
 
+db.sqlite3
 # ** Archivos Cache :
 __pycache__
 
@@ -11,4 +13,4 @@ data/migrations
 # ** Archivos de Datos 
 data/analysis/resources
 
-.vscode
+.vscodej
