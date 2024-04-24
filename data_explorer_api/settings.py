@@ -16,7 +16,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key') # ! Deploy
 DEBUG = 'RENDER' not in os.environ # ! deploy
 
 
-ALLOWED_HOSTS = ['https://data-explorer-uniboyaca-api.up.railway.app','localhost']
+ALLOWED_HOSTS = ['web-production-7d5f.up.railway.app','localhost']
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME') #! deploy
 
@@ -124,9 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 STATIC_URL = 'static/'
 
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # Default primary key field type
@@ -142,4 +140,11 @@ CORS_ALLOWED_ORIGINS = [
 # Modulo de AutoDocumentacion
 REST_FRAMEWORK = {
      "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
+}
+
+STORAGES = {
+    # ...
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
 }

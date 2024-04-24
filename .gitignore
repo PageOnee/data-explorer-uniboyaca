@@ -5,10 +5,7 @@ venv
 db.sqlite3
 # ** Archivos Cache :
 __pycache__
-
-# ** Archivos Migrations :
-users/migrations
-data/migrations
+staticfiles
 
 # ** Archivos de Datos 
 
