@@ -16,7 +16,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key') # ! Deploy
 DEBUG = 'RENDER' not in os.environ # ! deploy
 
 
-ALLOWED_HOSTS = ['localhost','web-production-7d5f.up.railway.app','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME') #! deploy
 

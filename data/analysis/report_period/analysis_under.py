@@ -65,6 +65,9 @@ class AnalysisUnder:
         elif(category == 'Informacion Personal'):     
           
             data_dic = Methods.count_data(df, Items.informacion_personal)
+            print('DataFrame')
+            print(data_dic)
+            
             
         elif (category == 'Informacion Familiar'):
             

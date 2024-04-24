@@ -69,7 +69,7 @@ class LoadData:
                 df[column] = df[column].apply(lambda x: ' '.join(x.split()) if isinstance(x, str) else x)
                 
             # Elimina columnas excedentes
-            columns_delete = ['Nombre','NombreEmpresa','JustificacionTiempoIngresoPost','JustificacionRecomendacion','Comentarios','LugarDeNacimiento','CiudadNacimiento','LugarResidencia','CiudadResidencia']
+            columns_delete = ['Nombre','NombreEmpresa','JustificacionTiempoIngresoPost','JustificacionRecomendacion','Comentarios','LugarDeNacimiento','LugarResidencia','CiudadResidencia']
             
             # Columnas excedentes
             for col in columns_delete:
