@@ -16,7 +16,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key') # ! Deploy
 DEBUG = 'RENDER' not in os.environ # ! deploy
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://data-explorer-uniboyaca-api.up.railway.app','localhost']
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME') #! deploy
 
