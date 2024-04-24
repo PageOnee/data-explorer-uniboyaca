@@ -10,3 +10,5 @@ staticfiles
 # ** Archivos de Datos 
 
 .vscodej
+
+.env

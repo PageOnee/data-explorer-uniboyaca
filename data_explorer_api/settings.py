@@ -16,7 +16,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key') # ! Deploy
 DEBUG = 'RENDER' not in os.environ # ! deploy
 
 
-ALLOWED_HOSTS = ['web-production-7d5f.up.railway.app','localhost']
+ALLOWED_HOSTS = ['localhost','web-production-7d5f.up.railway.app','127.0.0.1']
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME') #! deploy
 
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'data_explorer_api.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'client',('dist'))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'data_explorer_api.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='sqlite:///db.sqlite3',
+        default='sqlite:///'+os.path.join(BASE_DIR,"db.sqlite3"),
         conn_max_age=600
     )
 }
@@ -123,8 +123,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 STATIC_URL = 'static/'
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [    
+    os.path.join(BASE_DIR,'client','dist')
+]
 
 
 # Default primary key field type

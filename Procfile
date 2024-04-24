@@ -1,1 +1,1 @@
-web: python manage.py migrate && python manage.py collectstatic --no-input && gunicorn data_explorer_api.wsgi
+web: cd client && npm install && npm run build & cd.. && python manage.py migrate && python manage.py collectstatic && gunicorn data_explorer_api.wsgi
