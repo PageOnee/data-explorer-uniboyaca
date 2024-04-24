@@ -1,1 +1,1 @@
-web: python manage.py migrate && python manage.py collecstatic && gunicorn data_explorer_api.wsgi
+web: python manage.py migrate && python manage.py collectstatic && gunicorn data_explorer_api.wsgi
