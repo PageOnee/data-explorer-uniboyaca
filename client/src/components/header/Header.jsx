@@ -28,7 +28,7 @@ export const Header = ({ titleModule, titleSection }) => {
       <div className="d-flex flex-row align-items-center header__user-container">
 
         <p className="my-auto">Maicol Rojas</p>
-        <img src="/assets/images/predefined-user.jpg" alt="Foto de Perfil del Usuario" />
+        {/* <img src="/assets/images/predefined-user.jpg" alt="Foto de Perfil del Usuario" /> */}
         <FaSortDown />
 
       </div>

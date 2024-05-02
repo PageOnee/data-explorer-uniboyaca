@@ -19,7 +19,7 @@ function App() {
 
       <Routes>
         {/* Path ruta por defecto */}
-        <Route path="/" element={<Navigate to="/inicio" />} />
+        <Route path="/" element={<Navigate to="/inicio-sesion" />} />
 
         {/* Path rutas */}
         <Route path="inicio-sesion" element={<Login />} />
@@ -30,7 +30,7 @@ function App() {
 
 
         {/* Path para ruta no encontrada */}
-        <Route path="*" element={<Navigate to="/inicio" />} />
+        <Route path="*" element={<Navigate to="/inicio-sesion" />} />
       </Routes>
 
     </BrowserRouter>

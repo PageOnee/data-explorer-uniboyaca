@@ -4,10 +4,19 @@ import { useState, useEffect } from "react";
 /// Componentes
 import { Header } from "../../../../components/header/Header";
 import { LineChart } from "../../../../components/line-chart/LineChart"
+import { FilterBar } from "../../../../components/filter-bar/FilterBar";
+import { Toolbar } from "../../../../components/toolbar/Toolbar";
 
 /// Servicios
 import { getHistorical } from "../../../../services/data.api";
 
+import {
+    levelItems,
+    periodItems,
+    annualLapseItems,
+    categoryItems,
+    dataItems
+} from "../../../../util/itemsToolbar";
 
 export const ReportHistorical = () => {
 
@@ -36,6 +45,16 @@ export const ReportHistorical = () => {
             {/* Contenido */}
             <div className="col-12">
                 <div className="d-flex flex-row flex-wrap justify-content-between">
+
+                    {/* Barra de herramientas */}
+                    <Toolbar dropdownItems={{
+                        levelItems: levelItems,
+                        periodItems: periodItems,
+                        lapseItems: annualLapseItems,
+                        categoryItems: categoryItems
+                    }}
+                        isLapseActive={true} />
+
                     {data && <LineChart data={data} />}
                 </div>
             </div>
