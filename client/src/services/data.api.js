@@ -5,7 +5,7 @@ import axios from "axios";
 const URL =
   import.meta.env.MODE === "production"
     ? import.meta.env.VITE_BACKEND_URL
-    : 'https://web-production-7d5f.up.railway.app';
+    : 'https://web-production-7d5f.up.railway.app/';
 
 
 // Servicio : Traer datos - semestrales
