@@ -5,7 +5,7 @@ import axios from "axios";
 const URL =
   import.meta.env.NODE_ENV === "production"
     ? import.meta.env.VITE_BACKEND_URL
-    : 'http://127.0.0.1:8000';
+    : 'http://127.0.0.1:8000/jjhbhjbhbjbh';
 
 
 // Url base Api - Usuarios
