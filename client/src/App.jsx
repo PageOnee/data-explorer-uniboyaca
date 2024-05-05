@@ -1,5 +1,7 @@
 /// Liberias de react
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
+/// Librerias externas
 import { WavyContainer } from "react-wavy-transitions";
 
 /// Paginas
@@ -18,8 +20,9 @@ function App() {
       <WavyContainer />
 
       <Routes>
+
         {/* Path ruta por defecto */}
-        <Route path="/" element={<Navigate to="/inicio" />} />
+        <Route path="/" element={<Navigate to="/inicio-sesion" />} />
 
         {/* Path rutas */}
         <Route path="inicio-sesion" element={<Login />} />
@@ -31,6 +34,7 @@ function App() {
 
         {/* Path para ruta no encontrada */}
         <Route path="*" element={<Navigate to="/inicio" />} />
+
       </Routes>
 
     </BrowserRouter>

@@ -8,9 +8,8 @@ const userApi = axios.create({
 });
 
 
-// Servicio traer todos los usuarios
+// Servicio : Cargar lista de usuarios
 export const getAllUser = () => userApi.get("/");
 
-
-// Servicio crear usuario 
+// Servicio : Registrar usuario
 export const createUser = (user) => userApi.post("/", user);
