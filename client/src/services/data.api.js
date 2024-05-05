@@ -13,9 +13,9 @@ export const getInfoSemester = (level, lapsed, category, item, item_data) => {
   const baseUrl = `${URL}data-explorer/api/v1/data/report_period`;
   const interval = 'Semestral';
 
-  console.log(baseUrl)
-  const url = `${baseUrl}?level=${level}&interval=${interval}&lapse=${lapsed}&category=${category}&item=${item}&item_data=${item_data}`;
 
+  const url = `${baseUrl}?level=${level}&interval=${interval}&lapse=${lapsed}&category=${category}&item=${item}&item_data=${item_data}`;
+  console.log(url)
   return axios.get(url);
 };
 
