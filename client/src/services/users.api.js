@@ -5,7 +5,7 @@ import axios from "axios";
 const URL =
   import.meta.env.NODE_ENV === "production"
     ? import.meta.env.VITE_BACKEND_URL
-    : 'http://127.0.0.1:8000/jjhbhjbhbjbh';
+    : 'https://web-production-7d5f.up.railway.app';
 
 
 // Url base Api - Usuarios
