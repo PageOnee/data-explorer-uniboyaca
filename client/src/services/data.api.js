@@ -76,7 +76,7 @@ export const getItems = (item) => {
 // Servicio : Traer datos - generales
 export const getDataDashboard = () => {
   // const baseUrl = 'http://127.0.0.1:8000/data-explorer/api/v1/data/items-filter';
-  const baseUrl = `http://127.0.0.1:8000/data-explorer/api/v1/data/data-home`;
+  const baseUrl = `${URL}/data-explorer/api/v1/data/data-home`;
 
   const url = `${baseUrl}`;
 
