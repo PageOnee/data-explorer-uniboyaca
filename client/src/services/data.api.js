@@ -73,3 +73,12 @@ export const getItems = (item) => {
   return axios.get(url);
 };
 
+// Servicio : Traer datos - generales
+export const getDataDashboard = () => {
+  // const baseUrl = 'http://127.0.0.1:8000/data-explorer/api/v1/data/items-filter';
+  const baseUrl = `http://127.0.0.1:8000/data-explorer/api/v1/data/data-home`;
+
+  const url = `${baseUrl}`;
+
+  return axios.get(url);
+};

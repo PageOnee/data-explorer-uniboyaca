@@ -3,6 +3,7 @@ from .report_period.analysis_post import AnalysisPost
 from .report_period.analysis_under import AnalysisUnder
 from .report_historical.analysis_under import AnalysisUnderHistorical
 from .core.items_filtered import ItemsFiltered
+from .report_home.analysis_home import Analysis_Home
 
 ## Clase de enrutacion 
 class Analysis:
@@ -36,4 +37,8 @@ class Analysis:
     def items_filter(self, item):
         
         data = ItemsFiltered.item_filtered(item)
+        return data
+    
+    def data_dash(self):
+        data = Analysis_Home.getInfoDash(self)
         return data

@@ -138,7 +138,7 @@ export const LoginForm = () => {
         <div className="form__register-link">
           <p className="register-link__p">
             ¿ No tienes una cuenta ?
-            <WavyLink to="/registro-usuario" color="#ff0303">
+            <WavyLink to="/registro-usuario" color="#FF0303">
               <span>Crear Cuenta</span>
             </WavyLink>
           </p>

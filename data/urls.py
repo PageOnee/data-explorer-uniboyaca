@@ -21,6 +21,8 @@ urlpatterns = [
     path('api/v1/data/mode', AnalisysData.mode_data),
     
     # Ruta para traer los items de una columna
-    path('api/v1/data/items-filter', AnalisysData.mode_data)
+    path('api/v1/data/items-filter', AnalisysData.item_filter),
+    
+    path('api/v1/data/data-home', AnalisysData.data_dashboard)
     
 ]

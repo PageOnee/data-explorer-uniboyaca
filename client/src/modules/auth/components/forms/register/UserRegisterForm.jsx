@@ -77,7 +77,8 @@ export const UserRegisterForm = () => {
           <p className="login-link__p">
             {" "}
             ¿ Ya tienes una cuenta ?
-            <WavyLink to="/inicio-sesion" color="#FF004D">
+            <WavyLink to="/inicio-sesion" color="#FF0303">
+
               <span>Iniciar Sesión</span>
             </WavyLink>
           </p>

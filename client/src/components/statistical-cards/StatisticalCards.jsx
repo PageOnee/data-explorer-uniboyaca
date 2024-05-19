@@ -3,6 +3,7 @@ import React from 'react'
 
 /// Estilos
 import './StatisticalCards.css'
+import { TextFormatter } from "./../../util/formatText"
 
 // Componente : Tarjetas de Informacion Estadistica
 export const StatisticalCards = ({ data }) => {
@@ -21,8 +22,7 @@ export const StatisticalCards = ({ data }) => {
 
                     </h4>
 
-                    <p className='text-center p-3'>{item.value}</p>
-                    <span className='text-center card-statistical__icon'> API </span>
+                    <p className='py-4 text-center card-statistical__icon p-3'>{TextFormatter.capitalizeFirstLetterOfEachWord(item.value)}</p>
                 </div>
 
             ))}

@@ -61,7 +61,7 @@ class AnalisysData:
 
     # Metodo : Items de datos - Opciones Filtro
     @api_view(['GET'])
-    def mode_data(request):
+    def item_filter(request):
         
         item = request.query_params.get('item')
          
@@ -70,3 +70,11 @@ class AnalisysData:
             data = Analysis().items_filter(item)
             return Response(data, status=status.HTTP_200_OK)
         
+    # Metodo : Items de datos - Opciones Filtro
+    @api_view(['GET'])
+    def data_dashboard(request):
+         
+        if request.method == 'GET':
+            
+            data = Analysis().data_dash()
+            return Response(data, status=status.HTTP_200_OK)
