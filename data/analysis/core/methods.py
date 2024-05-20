@@ -18,6 +18,20 @@ class Methods:
         # Columnas a excluir
         exclude_columns = ['LugarDeNacimiento', 'CiudadNacimiento', 'LugarResidencia', 'CiudadResidencia']
         
+        def unify_estrato_data(data):
+            unified_data = {
+                "1": data.get("1 (bajo - bajo)", 0) + data.get("1", 0),
+                "2": data.get("2 (bajo)", 0) + data.get("2", 0),
+                "3": data.get("3 (medio - bajo)", 0) + data.get("3", 0),
+                "4": data.get("4 (medio)", 0) + data.get("4", 0),
+                "5": data.get("5 (medio - alto)", 0) + data.get("5", 0),
+                "no sabe / no responde": data.get("no sabe / no responde", 0) + data.get("no informa", 0),
+                "6": data.get("6", 0),
+                "7 o mas": data.get("7 o mas", 0)
+            }
+            return unified_data
+        
+        
         for column in columns:
             # Validar si la columna no está en el DataFrame
             if column not in df.columns:
@@ -47,6 +61,9 @@ class Methods:
                 # Si los valores no están separados por comas, contar las ocurrencias de valores únicos
                 value_counts = column_data.value_counts().to_dict()
                 data_dict[column] = value_counts
+                
+        unified_estrato_data = unify_estrato_data(data_dict["EstratoSocioEconomico"])
+        data_dict["EstratoSocioEconomico"] = unified_estrato_data
         
         return data_dict
 
