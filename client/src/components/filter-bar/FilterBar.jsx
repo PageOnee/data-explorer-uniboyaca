@@ -7,6 +7,7 @@ import { Dropdown } from "../dropdown/Dropdown";
 /// Estilos
 import "./FilterBar.css";
 
+import { TextFormatter } from "../../util/formatText"
 
 // Componente : Barra de Filtro
 export const FilterBar = ({ onSelect, dropdownItems }) => {

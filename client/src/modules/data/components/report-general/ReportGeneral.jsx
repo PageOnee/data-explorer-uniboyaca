@@ -156,7 +156,7 @@ export const ReportGeneral = () => {
                     {/* Barra de Filtros */}
                     <FilterBar onSelect={handleDropdownSelection} dropdownItems={{
                         dataColumnItems: dataItems,
-                        dataItems: dataItemsSelected.map(item => ({ name: item })),
+                        dataItems: dataItemsSelected.map(item => ({ name: TextFormatter.capitalizeFirstLetterOfEachWord(item) })),
                     }} />
 
                     <div className="d-flex flex-row flex-wrap justify-content-between">{chartBoxes}</div>

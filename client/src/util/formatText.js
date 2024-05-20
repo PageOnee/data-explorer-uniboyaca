@@ -54,6 +54,12 @@ class TextFormatter {
         return fraseSinEspacios;
     }
 
+    static toLowerCase(text) {
+        // Convertir el texto a minúsculas
+        var textoMinusculas = text.toLowerCase();
+        return textoMinusculas;
+    }
+
 }
 export { TextFormatter };
 

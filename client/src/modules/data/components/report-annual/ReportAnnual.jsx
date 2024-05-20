@@ -177,7 +177,7 @@ export const ReportAnnual = () => {
                     {/* Barra de Filtros */}
                     <FilterBar onSelect={handleDropdownSelection} dropdownItems={{
                         dataColumnItems: dataItems,
-                        dataItems: dataItemsSelected.map(item => ({ name: item })),
+                        dataItems: dataItemsSelected.map(item => ({ name: TextFormatter.capitalizeFirstLetterOfEachWord(item) })),
                     }} />
 
 

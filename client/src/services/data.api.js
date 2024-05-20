@@ -1,6 +1,7 @@
 /// Librerias de react
 import axios from "axios";
 
+import { TextFormatter } from "./../util/formatText"
 // ! PRODUCCION
 const URL =
   import.meta.env.MODE === "production"
@@ -14,7 +15,7 @@ export const getInfoSemester = (level, lapsed, category, item, item_data) => {
   const interval = 'Semestral';
 
 
-  const url = `${baseUrl}?level=${level}&interval=${interval}&lapse=${lapsed}&category=${category}&item=${item}&item_data=${item_data}`;
+  const url = `${baseUrl}?level=${level}&interval=${interval}&lapse=${lapsed}&category=${category}&item=${item}&item_data=${TextFormatter.toLowerCase(item_data)}`;
   console.log("URL BASE ", url)
   return axios.get(url);
 };
@@ -25,7 +26,7 @@ export const getInfoAnnual = (level, lapsed, category, item, item_data) => {
   const baseUrl = `${URL}/data-explorer/api/v1/data/report_period`;
   const interval = 'Anual';
 
-  const url = `${baseUrl}?level=${level}&interval=${interval}&lapse=${lapsed}&category=${category}&item=${item}&item_data=${item_data}`;
+  const url = `${baseUrl}?level=${level}&interval=${interval}&lapse=${lapsed}&category=${category}&item=${item}&item_data=${TextFormatter.toLowerCase(item_data)}`;
 
   return axios.get(url);
 };
@@ -35,7 +36,7 @@ export const getInfoPost = (level, interval, lapsed, category, item, item_data) 
   const baseUrl = `${URL}/data-explorer/api/v1/data/report_period`;
 
 
-  const url = `${baseUrl}?level=${level}&interval=${interval}&lapse=${lapsed}&category=${category}&item=${item}&item_data=${item_data}`;
+  const url = `${baseUrl}?level=${level}&interval=${interval}&lapse=${lapsed}&category=${category}&item=&item_data=${TextFormatter.toLowerCase(item_data)}`;
 
   return axios.get(url);
 };
@@ -47,7 +48,7 @@ export const getInfo = (level, lapsed, category, item, item_data) => {
   const baseUrl = `${URL}/data-explorer/api/v1/data/report_period`;
   const interval = 'General';
 
-  const url = `${baseUrl}?level=${level}&interval=${interval}&lapse=${lapsed}&category=${category}&item=${item}&item_data=${item_data}`;
+  const url = `${baseUrl}?level=${level}&interval=${interval}&lapse=${lapsed}&category=${category}&item=${item}&item_data=${TextFormatter.toLowerCase(item_data)}`;
 
   return axios.get(url);
 };
