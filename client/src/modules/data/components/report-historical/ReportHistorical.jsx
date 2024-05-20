@@ -46,15 +46,6 @@ export const ReportHistorical = () => {
             <div className="col-12">
                 <div className="d-flex flex-row flex-wrap justify-content-between">
 
-                    {/* Barra de herramientas */}
-                    <Toolbar dropdownItems={{
-                        levelItems: levelItems,
-                        periodItems: periodItems,
-                        lapseItems: annualLapseItems,
-                        categoryItems: categoryItems
-                    }}
-                        isLapseActive={true} />
-
                     {data && <LineChart data={data} />}
                 </div>
             </div>
